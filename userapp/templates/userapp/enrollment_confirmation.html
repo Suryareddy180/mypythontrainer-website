@@ -1,0 +1,43 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="confirmation" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 lg-6 mx-auto">
+                <div class="card mt-4 shadow-lg">
+                    <div class="card-body p-4">
+                        <h2 class="text-center">Confirmation</h2>  
+
+                        {% if is_registered %}
+                            <p class="text-center text-danger mt-1">You have already registered for <b>{{registered_course_name}}</b> course in the batch: <strong>{{ registered_batch_number }}</strong>.</p>
+                            {% if registered_batch_status == 'freezed' %}
+                                Do you still want to register for the same course in another batch <b>{{batch_number}}</b>?
+                                <form method="POST" action="{% url 'userapp:new_course_enrollment' registered_course_name batch_number %}" >
+								
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary btn-block">Confirm Registration</button>
+                                </form>
+                            {% else %}
+                                <p class="text-center text-danger">Since <b>{{ registered_batch_number }}</b> batch is Active, you cannot register for a new batch.</p>
+                            {% endif %}
+                        {% else %}
+                            <form method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary btn-block">Confirm Registration</button>
+                            </form>
+                        {% endif %}
+                        
+                        <div class="pt-3 text-center">
+                            <a href="{% url 'userapp:applied_courses' %}">
+                                <button type="submit" class="btn btn-block btn-sm custom-btn">Go to My Enrolled Courses</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

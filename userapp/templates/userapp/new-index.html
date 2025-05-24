@@ -1,0 +1,726 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+{% block title %}My Python Trainer{% endblock %}
+{% block content %}
+
+<!-- Replaced with simple landing container
+<section id="slider-sec">
+    <div class="main_banner">
+        <div class="main-slide">
+            <div class="slide-content" style="background-image: url('{% static 'frontend_assets/images/slide1.jpg' %}');">
+                <h2 class="banner_title">"We trust, Python is not just a programming language, but a philosophy of
+                    simplicity, readability, and limitless possibilities."</h2>
+            </div>
+        </div>
+
+        <div class="main-slide">
+            <div class="slide-content" style="background-image: url('{% static 'frontend_assets/images/slide-img-2.jpg' %}');">
+                <h2 class="banner_title">"With Python, the only limit is your imagination - so dream big, code
+                    fearlessly, and let your creativity soar."</h2>
+            </div>
+        </div>
+
+        <div class="main-slide">
+            <div class="slide-content" style="background-image: url('{% static 'frontend_assets/images/slide3.jpg' %}');">
+                <h2 class="banner_title">"In a world of complexity, Python is your compass - guiding you through the
+                    maze of challenges with its simplicity and clarity."</h2>
+            </div>
+        </div>
+
+        <div class="main-slide">
+            <div class="slide-content" style="background-image: url('{% static 'frontend_assets/images/slide4.jpg' %}');">
+                <h2 class="banner_title">"With Python, you're not just writing code, you're crafting solutions,
+                    building bridges between ideas and actions, and shaping the future of technology."</h2>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider">
+        </div>
+    </div>
+</section>
+
+
+<section id="intro-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="about_content">
+                    <div class="ant-flex">
+                        <h1 class="ant-typography main-quote">Switch your carrer to Python & <strong>Upskill
+                                Yourself</strong></h1>
+                        <hr class="intro-hr">
+                        <div class="ant-space">
+                            <div class="ant-space-item">
+                                <span class="ant-typography d-block power-quote">Training by IIT Roorkee Alumni</span>
+                            </div>
+                        </div>
+                        <a href="{% url 'userapp:new_courses_calendar_page' %}" class="td-none">
+                            <button type="button" class="btn btn-primary cta-button">Explore Courses
+                            </button>
+                        </a>&nbsp;
+                        <a href="{% url 'userapp:new_registration_page' %}" class="td-none ml-2">
+                            <button type="button" class="btn btn-theme cta-button">Register Now
+                            </button>
+                        </a>
+                    </div>
+                    <div class="card border-0 mt-4">
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <!-- Load quote dynamically -->
+                                <p class="text-muted" style="font-size: 16px;"><img
+                                        src="/static/frontend_assets/images/quote.png" width="50" alt="Quote Icon"
+                                        class="quote-image">
+                                    <span id="random-quote">Quote loading...</span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-2" style="margin: auto;">
+
+            </div>
+        </div>
+    </div>
+</section>
+<div class="mt-1">&nbsp;</div>
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider    text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 col-md-4">
+                <div class="about_img">
+                    <img src="{% static 'frontend_assets/images/trainers/Chaitanya.jpg' %}" alt=""
+                        class="img-fluid rounded-circle">
+                </div>
+            </div>
+            <div class="col-12 col-md-7">
+                <div class="about_content">
+                    <div class="ant-flex">
+                        <h1 class="ant-typography ">About Me</h1>
+                        <div class="ant-space ">
+                            <div class="ant-space-item">
+                                <span class="ant-typography d-block">Mr. D. Chaitanya is a seasoned professional with a
+                                    robust educational background, holding an M.Tech degree from IIT Roorkee. With over
+                                    20 years of experience in the IT industry, Mr. Chaitanya has amassed extensive
+                                    knowledge and skills in Python, Data Science technologies.</span>
+                            </div>
+                            <div class="ant-space-item mt-2 mb-3">
+                                <span class="ant-typography d-block">Notably, he trained 70+ batches so far successfully
+                                    and possess over a decade of experience in training, indicating a strong capability
+                                    for imparting knowledge and training graduates, job aspirants. Having worked with
+                                    multiple MNC companies across different continents, Mr. Chaitanya likely has a
+                                    diverse range of experiences and perspectives in the IT sector.</span>
+                            </div>
+                        </div>
+                        <a href="{% url 'userapp:new_about_page' %}">
+                            <button type="button" class="btn btn-primary"
+                                style="width: 200px; margin-top: 10px;"><span>More
+                                    Details </span>
+                                <span role="img" aria-label="arrow-right" class="anticon anticon-arrow-right"><svg
+                                        viewBox="64 64 896 896" focusable="false" data-icon="arrow-right" width="1em"
+                                        height="1em" fill="currentColor" aria-hidden="true">
+                                        <path
+                                            d="M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-.7 5.2-2L869 536.2a32.07 32.07 0 000-48.4z">
+                                        </path>
+                                    </svg></span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider    text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+<section id="courses">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="courses_head">
+                    <h2 class="ant-typography text-center">Courses Offering</h2>
+                    <span class="ant-typography">Here are some top trending courses that Mr. D. Chaitanya has been
+                        offering based on his qualifications and experience:</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Courses Section -->
+        <div class="row mt-4 row-gap-4"> <!-- Added row-gap to space out cards better -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="{% static 'frontend_assets/images/courses/Core Python.jpg' %}"
+                        class="Complete_Python img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">Core Python</h5>
+                        <a href="{% url 'userapp:new_courses_calendar_page' %}#Core Python"
+                            class="btn btn-secondary mt-3 w-100">Explore Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="{% static 'frontend_assets/images/courses/Python Fullstack.jpg' %}"
+                        class="Complete_Python img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">Python Fullstack</h5>
+                        <a href="{% url 'userapp:new_courses_calendar_page' %}#Python Fullstack"
+                            class="btn btn-secondary mt-3 w-100">Explore Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="{% static 'frontend_assets/images/courses/Data Science.jpg' %}"
+                        class="Complete_Python img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">Data Science</h5>
+                        <a href="{% url 'userapp:new_courses_calendar_page' %}#Data Science"
+                            class="btn btn-secondary mt-3 w-100">Explore Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card shadow-sm">
+                    <img src="{% static 'frontend_assets/images/courses/React JS.jpg' %}"
+                        class="Complete_Python img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">React JS</h5>
+                        <a href="{% url 'userapp:new_courses_calendar_page' %}#React JS"
+                            class="btn btn-secondary mt-3 w-100">Explore Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider    text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+<section id="special">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="courses_head">
+                    <h2 class="ant-typography text-center">Courses Specialities</h2>
+                    <span class="ant-typography">Here are some key features that Mr. D. Chaitanya has been
+                        incorporating
+                        into their courses to enhance the learning experience:</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 row-gap-4">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="special-card ">
+                    <div class="special-card-body">
+                        <div class="s-flex">
+                            <span class="d-flex justify-content-center"><svg viewBox="64 64 896 896" focusable="false"
+                                    data-icon="video-camera-add" width="1em" height="1em" fill="currentColor"
+                                    aria-hidden="true">
+                                    <defs>
+                                        <style></style>
+                                    </defs>
+                                    <path
+                                        d="M368 724H252V608c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v116H72c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h116v116c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V788h116c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z">
+                                    </path>
+                                    <path
+                                        d="M912 302.3L784 376V224c0-35.3-28.7-64-64-64H128c-35.3 0-64 28.7-64 64v352h72V232h576v560H448v72h272c35.3 0 64-28.7 64-64V648l128 73.7c21.3 12.3 48-3.1 48-27.6V330c0-24.6-26.7-40-48-27.7zM888 625l-104-59.8V458.9L888 399v226z">
+                                    </path>
+                                    <path
+                                        d="M320 360c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H208c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h112z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <h5 class="ant-typography ">Session Recording</h5><span class="ant-typography ">Every
+                                live class will be recorded and shared to
+                                student immediate after the class. </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="special-card ">
+                    <div class="special-card-body">
+                        <div class="s-flex">
+                            <span class="d-flex justify-content-center"><svg viewBox="64 64 896 896" focusable="false"
+                                    data-icon="file-pdf" width="1em" height="1em" fill="currentColor"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M531.3 574.4l.3-1.4c5.8-23.9 13.1-53.7 7.4-80.7-3.8-21.3-19.5-29.6-32.9-30.2-15.8-.7-29.9 8.3-33.4 21.4-6.6 24-.7 56.8 10.1 98.6-13.6 32.4-35.3 79.5-51.2 107.5-29.6 15.3-69.3 38.9-75.2 68.7-1.2 5.5.2 12.5 3.5 18.8 3.7 7 9.6 12.4 16.5 15 3 1.1 6.6 2 10.8 2 17.6 0 46.1-14.2 84.1-79.4 5.8-1.9 11.8-3.9 17.6-5.9 27.2-9.2 55.4-18.8 80.9-23.1 28.2 15.1 60.3 24.8 82.1 24.8 21.6 0 30.1-12.8 33.3-20.5 5.6-13.5 2.9-30.5-6.2-39.6-13.2-13-45.3-16.4-95.3-10.2-24.6-15-40.7-35.4-52.4-65.8zM421.6 726.3c-13.9 20.2-24.4 30.3-30.1 34.7 6.7-12.3 19.8-25.3 30.1-34.7zm87.6-235.5c5.2 8.9 4.5 35.8.5 49.4-4.9-19.9-5.6-48.1-2.7-51.4.8.1 1.5.7 2.2 2zm-1.6 120.5c10.7 18.5 24.2 34.4 39.1 46.2-21.6 4.9-41.3 13-58.9 20.2-4.2 1.7-8.3 3.4-12.3 5 13.3-24.1 24.4-51.4 32.1-71.4zm155.6 65.5c.1.2.2.5-.4.9h-.2l-.2.3c-.8.5-9 5.3-44.3-8.6 40.6-1.9 45 7.3 45.1 7.4zm191.4-388.2L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <h5 class="ant-typography ">Course Material
+                            </h5><span class="ant-typography ">Entire course material will be shared to
+                                student during starting of the course itself.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="special-card ">
+                    <div class="special-card-body">
+                        <div class="s-flex">
+                            <span class="d-flex justify-content-center"><svg viewBox="64 64 896 896" focusable="false"
+                                    data-icon="field-time" width="1em" height="1em" fill="currentColor"
+                                    aria-hidden="true">
+                                    <defs>
+                                        <style></style>
+                                    </defs>
+                                    <path
+                                        d="M945 412H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h256c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM811 548H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h122c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM477.3 322.5H434c-6.2 0-11.2 5-11.2 11.2v248c0 3.6 1.7 6.9 4.6 9l148.9 108.6c5 3.6 12 2.6 15.6-2.4l25.7-35.1v-.1c3.6-5 2.5-12-2.5-15.6l-126.7-91.6V333.7c.1-6.2-5-11.2-11.1-11.2z">
+                                    </path>
+                                    <path
+                                        d="M804.8 673.9H747c-5.6 0-10.9 2.9-13.9 7.7a321 321 0 01-44.5 55.7 317.17 317.17 0 01-101.3 68.3c-39.3 16.6-81 25-124 25-43.1 0-84.8-8.4-124-25-37.9-16-72-39-101.3-68.3s-52.3-63.4-68.3-101.3c-16.6-39.2-25-80.9-25-124 0-43.1 8.4-84.7 25-124 16-37.9 39-72 68.3-101.3 29.3-29.3 63.4-52.3 101.3-68.3 39.2-16.6 81-25 124-25 43.1 0 84.8 8.4 124 25 37.9 16 72 39 101.3 68.3a321 321 0 0144.5 55.7c3 4.8 8.3 7.7 13.9 7.7h57.8c6.9 0 11.3-7.2 8.2-13.3-65.2-129.7-197.4-214-345-215.7-216.1-2.7-395.6 174.2-396 390.1C71.6 727.5 246.9 903 463.2 903c149.5 0 283.9-84.6 349.8-215.8a9.18 9.18 0 00-8.2-13.3z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <h5 class="ant-typography ">Assignments
+                            </h5><span class="ant-typography ">Lot of programs are shared to students for an excellent
+                                code practice.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="special-card ">
+                    <div class="special-card-body">
+                        <div class="s-flex">
+                            <span class="d-flex justify-content-center">
+                                <svg viewBox="64 64 896 896" focusable="false" data-icon="user" width="1em" height="1em"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M858.5 763.6a374 374 0 00-80.6-119.5 375.63 375.63 0 00-119.5-80.6c-.4-.2-.8-.3-1.2-.5C719.5 518 760 444.7 760 362c0-137-111-248-248-248S264 225 264 362c0 82.7 40.5 156 102.8 201.1-.4.2-.8.3-1.2.5-44.8 18.9-85 46-119.5 80.6a375.63 375.63 0 00-80.6 119.5A371.7 371.7 0 00136 901.8a8 8 0 008 8.2h60c4.4 0 7.9-3.5 8-7.8 2-77.2 33-149.5 87.8-204.3 56.7-56.7 132-87.9 212.2-87.9s155.5 31.2 212.2 87.9C779 752.7 810 825 812 902.2c.1 4.4 3.6 7.8 8 7.8h60a8 8 0 008-8.2c-1-47.8-10.9-94.3-29.5-138.2zM512 534c-45.9 0-89.1-17.9-121.6-50.4S340 407.9 340 362c0-45.9 17.9-89.1 50.4-121.6S466.1 190 512 190s89.1 17.9 121.6 50.4S684 316.1 684 362c0 45.9-17.9 89.1-50.4 121.6S557.9 534 512 534z">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="field-time"
+                                            width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                            <defs>
+                                                <style></style>
+                                            </defs>
+                                            <path
+                                                d="M945 412H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h256c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM811 548H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h122c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM477.3 322.5H434c-6.2 0-11.2 5-11.2 11.2v248c0 3.6 1.7 6.9 4.6 9l148.9 108.6c5 3.6 12 2.6 15.6-2.4l25.7-35.1v-.1c3.6-5 2.5-12-2.5-15.6l-126.7-91.6V333.7c.1-6.2-5-11.2-11.1-11.2z">
+                                            </path>
+                                            <path
+                                                d="M804.8 673.9H747c-5.6 0-10.9 2.9-13.9 7.7a321 321 0 01-44.5 55.7 317.17 317.17 0 01-101.3 68.3c-39.3 16.6-81 25-124 25-43.1 0-84.8-8.4-124-25-37.9-16-72-39-101.3-68.3s-52.3-63.4-68.3-101.3c-16.6-39.2-25-80.9-25-124 0-43.1 8.4-84.7 25-124 16-37.9 39-72 68.3-101.3 29.3-29.3 63.4-52.3 101.3-68.3 39.2-16.6 81-25 124-25 43.1 0 84.8 8.4 124 25 37.9 16 72 39 101.3 68.3a321 321 0 0144.5 55.7c3 4.8 8.3 7.7 13.9 7.7h57.8c6.9 0 11.3-7.2 8.2-13.3-65.2-129.7-197.4-214-345-215.7-216.1-2.7-395.6 174.2-396 390.1C71.6 727.5 246.9 903 463.2 903c149.5 0 283.9-84.6 349.8-215.8a9.18 9.18 0 00-8.2-13.3z">
+                                            </path>
+                                        </svg>
+                                    </path>
+                                </svg>
+                            </span>
+                            <h5 class="ant-typography ">Accessible Trainer
+                            </h5><span class="ant-typography ">Mr. D. Chaitanya always available to all learners apart
+                                from class timings too.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="special-card ">
+                    <div class="special-card-body">
+                        <div class="s-flex">
+                            <span class="d-flex justify-content-center">
+                                <svg viewBox="64 64 896 896" focusable="false" data-icon="question-circle" width="1em"
+                                    height="1em" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z">
+                                    </path>
+                                    <path
+                                        d="M623.6 316.7C593.6 290.4 554 276 512 276s-81.6 14.5-111.6 40.7C369.2 344 352 380.7 352 420v7.6c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V420c0-44.1 43.1-80 96-80s96 35.9 96 80c0 31.1-22 59.6-56.1 72.7-21.2 8.1-39.2 22.3-52.1 40.9-13.1 19-19.9 41.8-19.9 64.9V620c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-22.7a48.3 48.3 0 0130.9-44.8c59-22.7 97.1-74.7 97.1-132.5.1-39.3-17.1-76-48.3-103.3zM472 732a40 40 0 1080 0 40 40 0 10-80 0z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <h5 class="ant-typography ">Question Hour
+
+
+                            </h5><span class="ant-typography ">Dedicated 15 minutes question hour is also
+                                scheduled on every Saturday's class to clarify student's doubts.
+
+
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="special-card ">
+                    <div class="special-card-body">
+                        <div class="s-flex">
+                            <span class="d-flex justify-content-center">
+                                <svg viewBox="64 64 896 896" focusable="false" data-icon="form" width="1em" height="1em"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M904 512h-56c-4.4 0-8 3.6-8 8v320H184V184h320c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V520c0-4.4-3.6-8-8-8z">
+                                    </path>
+                                    <path
+                                        d="M355.9 534.9L354 653.8c-.1 8.9 7.1 16.2 16 16.2h.4l118-2.9c2-.1 4-.9 5.4-2.3l415.9-415c3.1-3.1 3.1-8.2 0-11.3L785.4 114.3c-1.6-1.6-3.6-2.3-5.7-2.3s-4.1.8-5.7 2.3l-415.8 415a8.3 8.3 0 00-2.3 5.6zm63.5 23.6L779.7 199l45.2 45.1-360.5 359.7-45.7 1.1.7-46.4z">
+                                    </path>
+                                </svg>>
+                            </span>
+                            <h5 class="ant-typography ">Weekly Tests
+
+
+
+                            </h5><span class="ant-typography ">Conducts a test on every week, review the
+                                code
+                                written by every student to provide feedback to them.
+
+
+
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+
+                <div class="special-card ">
+                    <div class="special-card-body">
+                        <div class="s-flex">
+                            <span class="d-flex justify-content-center">
+                                <svg viewBox="64 64 896 896" focusable="false" data-icon="aim" width="1em" height="1em"
+                                    fill="currentColor" aria-hidden="true">
+                                    <defs>
+                                        <style></style>
+                                    </defs>
+                                    <path
+                                        d="M952 474H829.8C812.5 327.6 696.4 211.5 550 194.2V72c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v122.2C327.6 211.5 211.5 327.6 194.2 474H72c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h122.2C211.5 696.4 327.6 812.5 474 829.8V952c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V829.8C696.4 812.5 812.5 696.4 829.8 550H952c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8zM512 756c-134.8 0-244-109.2-244-244s109.2-244 244-244 244 109.2 244 244-109.2 244-244 244z">
+                                    </path>
+                                    <path
+                                        d="M512 392c-32.1 0-62.1 12.4-84.8 35.2-22.7 22.7-35.2 52.7-35.2 84.8s12.5 62.1 35.2 84.8C449.9 619.4 480 632 512 632s62.1-12.5 84.8-35.2C619.4 574.1 632 544 632 512s-12.5-62.1-35.2-84.8A118.57 118.57 0 00512 392z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <h5 class="ant-typography ">Highlight IMP
+                            </h5>
+                            <span class="ant-typography ">Every important interview questions will be high
+                                lighted during concept explanation in class.
+
+
+
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="special-card ">
+                    <div class="special-card-body">
+                        <div class="s-flex">
+                            <span class="d-flex justify-content-center">
+                                <svg viewBox="64 64 896 896" focusable="false" data-icon="fire" width="1em" height="1em"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M834.1 469.2A347.49 347.49 0 00751.2 354l-29.1-26.7a8.09 8.09 0 00-13 3.3l-13 37.3c-8.1 23.4-23 47.3-44.1 70.8-1.4 1.5-3 1.9-4.1 2-1.1.1-2.8-.1-4.3-1.5-1.4-1.2-2.1-3-2-4.8 3.7-60.2-14.3-128.1-53.7-202C555.3 171 510 123.1 453.4 89.7l-41.3-24.3c-5.4-3.2-12.3 1-12 7.3l2.2 48c1.5 32.8-2.3 61.8-11.3 85.9-11 29.5-26.8 56.9-47 81.5a295.64 295.64 0 01-47.5 46.1 352.6 352.6 0 00-100.3 121.5A347.75 347.75 0 00160 610c0 47.2 9.3 92.9 27.7 136a349.4 349.4 0 0075.5 110.9c32.4 32 70 57.2 111.9 74.7C418.5 949.8 464.5 959 512 959s93.5-9.2 136.9-27.3A348.6 348.6 0 00760.8 857c32.4-32 57.8-69.4 75.5-110.9a344.2 344.2 0 0027.7-136c0-48.8-10-96.2-29.9-140.9zM713 808.5c-53.7 53.2-125 82.4-201 82.4s-147.3-29.2-201-82.4c-53.5-53.1-83-123.5-83-198.4 0-43.5 9.8-85.2 29.1-124 18.8-37.9 46.8-71.8 80.8-97.9a349.6 349.6 0 0058.6-56.8c25-30.5 44.6-64.5 58.2-101a240 240 0 0012.1-46.5c24.1 22.2 44.3 49 61.2 80.4 33.4 62.6 48.8 118.3 45.8 165.7a74.01 74.01 0 0024.4 59.8 73.36 73.36 0 0053.4 18.8c19.7-1 37.8-9.7 51-24.4 13.3-14.9 24.8-30.1 34.4-45.6 14 17.9 25.7 37.4 35 58.4 15.9 35.8 24 73.9 24 113.1 0 74.9-29.5 145.4-83 198.4z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <h5 class="ant-typography ">100% Job Assistance</h5>
+                            <span class="ant-typography ">Trainer and his supporting team will provide
+                                complete job assistance to every student, but can't provide job guarantee.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider    text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+<section id="stories">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="courses_head">
+                    <h2 class="ant-typography text-center">Student Stories </h2>
+                    <span class="ant-typography">Here are some stories students shared about learning experience,
+                        course
+                        content, teaching skills of trainer, etc... during the training:</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="slide_test">
+                <div class="col-4">
+                    <div class="story-card">
+                        <div class="story-card-body">
+                            <div class="ant-flex ">
+                                <span class="ant-typography d-block" style="line-height: 30px;">I have been attending classes
+                                    for some time, the way
+                                    Chaitanya Sir explains is easy to understand even for people from non-coding
+                                    backgrounds. He also takes time in
+                                    clearing doubts and conducting Assignments to make us feel confident and get more
+                                    practical.</span>
+                                <div class="d-flex align-items-center" style="margin-top: 10px;">
+                                    <span class="ant-avatar ">
+                                        <img src="{% static 'frontend_assets/images/stories/Ajith.jpeg' %}">
+                                    </span>
+                                    <div class="ant-flex" style="margin-left: 10px;">
+                                        <h5 class="ant-typography" style="margin: 0px;">Ajith Reddy</h5>
+                                        <span class="ant-typography">Hyderabad</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="story-card">
+                        <div class="story-card-body">
+                            <div class="ant-flex ">
+                                <span class="ant-typography d-block" style="line-height: 30px;">I had an excellent learning
+                                    experience during my Python training. The instructor's guidance and clear
+                                    explanations not only deepened my understanding of Python concepts but also played a
+                                    significant role in helping me secure my job.</span>
+                                <div class="d-flex align-items-center" style="margin-top: 10px;">
+                                    <span class="ant-avatar ">
+                                        <img src="{% static 'frontend_assets/images/stories/Niveditha.jpeg' %}">
+                                    </span>
+                                    <div class="ant-flex" style="margin-left: 10px;">
+                                        <h5 class="ant-typography" style="margin: 0px;">D. Nivedita</h5>
+                                        <span class="ant-typography">Hyderabad</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="story-card">
+                        <div class="story-card-body">
+                            <div class="ant-flex ">
+                                <span class="ant-typography d-block" style="line-height: 30px;">This Python training program was exceptional, offering a
+                                    comprehensive curriculum, expert instruction, and valuable career guidance. The hands-on approach was particularly
+                                    effective, the challenging assignments pushed me to think effectively.</span>
+                                <div class="d-flex align-items-center" style="margin-top: 10px;">
+                                    <span class="ant-avatar ">
+                                        <img src="{% static 'frontend_assets/images/stories/Karthiram.jpeg' %}">
+                                    </span>
+                                    <div class="ant-flex" style="margin-left: 10px;">
+                                        <h5 class="ant-typography" style="margin: 0px;">Karthik Ram</h5>
+                                        <span class="ant-typography">Hyderabad</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4  ">
+                    <div class="story-card">
+                        <div class="story-card-body">
+                            <div class="ant-flex ">
+                                <span class="ant-typography d-block" style="line-height: 30px;">Python class are so good and easy to understand. Chaitanya sir
+                                    made even the complex topics very simple with very good examples in the classes.</span>
+                                <div class="d-flex align-items-center" style="margin-top: 10px;">
+                                    <span class="ant-avatar ">
+                                        <img src="{% static 'frontend_assets/images/stories/Kaveri.jpeg' %}">
+                                    </span>
+                                    <div class="ant-flex" style="margin-left: 10px;">
+                                        <h5 class="ant-typography" style="margin: 0px;">Kaveri</h5>
+                                        <span class="ant-typography">Hyderabad</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

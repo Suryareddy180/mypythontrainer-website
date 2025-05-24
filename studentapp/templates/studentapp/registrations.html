@@ -1,0 +1,111 @@
+{% extends 'studentapp/base.html' %}
+{% load humanize %}
+{% load custom_filters %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <h4 class="header-title mb-3">
+            <a href="{% url 'adminapp:admin_home' %}">Admin Home</a> / Students / Registrations
+        </h4>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table id="studentData" class="table table-bordered table-striped table-hover m-0">
+        <thead class="thead-theme-custom">
+            <tr>
+                <th></th>
+                <th>Basic Details</th>
+                <th>More Details</th>
+                <th>Pending Enrollments</th>
+                <th>Deactivated Enrollments</th>
+                <th>Reserved Enrollments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registration in registrations_data %}
+            <tr>
+                <!-- Profile Photo -->
+                <td>
+                    {% if registration.photo %}
+                        <img src="{{ registration.photo.url }}" width="40" class="rounded-circle" />
+                    {% else %}
+                        <img src="{% static 'userapp/images/default_user.png' %}" width="40" class="rounded-circle" />
+                    {% endif %}
+                </td>
+
+                <!-- Basic Details -->
+                <td>
+                    <b>{{ registration.user.first_name|capfirst }} {{ registration.user.last_name|capfirst }}</b><br>
+                    <span style="font-size: 0.7rem;">
+                        <u>{{ registration.user.email }}</u><br>
+                        {{ registration.mobile_number }}
+                    </span>
+                </td>
+
+                <!-- More Details -->
+                <td>
+                    <b>{{ registration.position }}</b> (<i>{{ registration.qualification }}</i>)<br>
+                    <span style="font-size: 0.7rem;">
+                        {{ registration.city }}, {{ registration.country }}
+                    </span><br>
+                    <span class="badge bg-success badge-pill">{{ registration.all_enrollments|length }} Enrollments</span>
+                </td>
+
+                <!-- Pending Enrollments -->
+                <td>
+                    {% if registration.need_attention_enrollments %}
+                        {{ registration.need_attention_enrollments }}
+                    {% else %}
+                        {% for enrollment in registration.pending_enrollments %}
+                            <b>{{ enrollment.batch.course.title }}</b> (<i>{{ enrollment.batch.batch_number }}</i>)<br>
+                            <span style="font-size: 0.7rem;">
+                                {{ enrollment.batch.start_date|date:"d M, y" }} ({{ enrollment.batch.duration|course_duration_round }} months)<br>
+                                {{ enrollment.batch.start_time }} - {{ enrollment.batch.end_time }} IST<br>
+                                {{ enrollment.enrollment_date|date:"d M, y @ h:i a" }} IST
+                            </span><br>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+
+                <!-- Deactivated Enrollments -->
+                <td>
+                    {% if registration.need_attention_enrollments %}
+                        {{ registration.need_attention_enrollments }}
+                    {% else %}
+                        {% for enrollment in registration.deactivated_enrollments %}
+                            <b>{{ enrollment.batch.course.title }}</b> (<i>{{ enrollment.batch.batch_number }}</i>)<br>
+                            <span style="font-size: 0.7rem;">
+                                {{ enrollment.batch.start_date|date:"d M, y" }} ({{ enrollment.batch.duration|course_duration_round }} months)<br>
+                                {{ enrollment.batch.start_time }} - {{ enrollment.batch.end_time }} IST<br>
+                                {{ enrollment.enrollment_date|date:"d M, y @ h:i a" }} IST
+                            </span><br>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+
+                <!-- Reserved Enrollments -->
+                <td>
+                    {% if registration.need_attention_enrollments %}
+                        {{ registration.need_attention_enrollments }}
+                    {% else %}
+                        {% for enrollment in registration.reserved_enrollments %}
+                            <b>{{ enrollment.batch.course.title }}</b> (<i>{{ enrollment.batch.batch_number }}</i>)<br>
+                            <span style="font-size: 0.7rem;">
+                                {{ enrollment.batch.start_date|date:"d M, y" }} ({{ enrollment.batch.duration|course_duration_round }} months)<br>
+                                {{ enrollment.batch.start_time }} - {{ enrollment.batch.end_time }} IST<br>
+                                {{ enrollment.enrollment_date|date:"d M, y @ h:i a" }} IST
+                            </span><br>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

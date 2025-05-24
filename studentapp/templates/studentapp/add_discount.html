@@ -1,0 +1,93 @@
+{% extends 'studentapp/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Add Discount{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow rounded-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Add Discount for {{ enrollment.user.first_name }} {{ enrollment.user.last_name }}</h5>
+        </div>
+
+        <form method="POST" action="{% url 'studentapp:add_discount' enrollment.id %}">
+            {% csrf_token %}
+            <div class="card-body">
+
+                <!-- Readonly Fields -->
+                <div class="mb-3">
+                    <label class="form-label">Student Name</label>
+                    <input type="text" class="form-control" value="{{enrollment.user.user.first_name}} {{ enrollment.user.user.last_name }}" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" value="{{ enrollment.user.mobile_number  }}" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" value="{{ enrollment.user.user.email }}" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Course Name</label>
+                    <input type="text" class="form-control" value="{{ enrollment.batch.course.title }}" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Booking Amount (Advance Fee)</label>
+                    <input type="text" class="form-control" value="₹{{ enrollment.adv_fee|intcomma }}" readonly>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Course Fee</label>
+                    <input type="text" id="courseFee" class="form-control" value="{{ enrollment.course_fee }}" readonly>
+                </div>
+
+                <!-- Editable Discount Field -->
+                <div class="mb-3">
+                    <label class="form-label">Discount (Enter amount)</label>
+                    {{ form.fee_discount }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Final Fee (Course Fee - Discount)</label>
+                    <input type="text" id="finalFee" class="form-control" readonly>
+                </div>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-end gap-2">
+                <a href="{% url 'studentapp:view_students' %}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save Discount</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- JavaScript to Auto Calculate Final Fee -->
+<script>
+function calculateFinalFee() {
+  const courseFee = parseFloat(document.getElementById('courseFee').value) || 0;
+  const discountField = document.querySelector('[name="fee_discount"]');
+  const finalFeeField = document.getElementById('finalFee');
+
+  const discount = parseFloat(discountField.value) || 0;
+  const finalFee = courseFee - discount;
+
+  finalFeeField.value = finalFee.toFixed(2);
+}
+
+// Calculate on page load and when discount changes
+document.addEventListener("DOMContentLoaded", function() {
+  calculateFinalFee();
+
+  const discountField = document.querySelector('[name="fee_discount"]');
+  discountField.addEventListener('input', calculateFinalFee);
+});
+</script>
+
+{% endblock %}

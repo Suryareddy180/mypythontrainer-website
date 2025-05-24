@@ -1,0 +1,41 @@
+<!-- NOT USED -->
+{% extends 'userapp/base.html' %}
+<!--load crispy form-->
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section id="register" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <!-- create a legend -->
+                                <h1 class="display-6 border-bottom">
+                                    Register
+                                </h1>
+                                {{form|crispy}}
+                                
+                            </div>
+                            <!-- create a button -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-info btn-block">Sign Up</button>
+                            </div>
+                        </form>
+                        <!-- if already having account -->
+                        <div class="pt-2">
+                            <small class="text-muted">Already Have an Account?
+                                <a href="{% url 'userapp:login' %}" class="ml-3">Sign In</a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

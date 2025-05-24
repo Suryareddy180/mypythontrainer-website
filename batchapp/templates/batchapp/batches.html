@@ -1,0 +1,241 @@
+{% extends 'batchapp/base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+{% load custom_filters %}
+
+<!-- start row  -->
+<div class="row">
+    <div class="col-12">
+        <div>
+            <h4 class="header-title mb-3">
+                <a href="{% url 'adminapp:admin_home' %}">Admin Home</a> / Batches
+            </h4>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+<form method="GET" class="row mb-4" action="{% url 'batchapp:batch_list' %}">
+    <div class="col-md-3">
+        <label for="batch">Batch:</label>
+        <select name="batch" id="batch" class="form-control">
+            <option value="">All Batches</option>
+            {% for batch in batch_list %}
+                <option value="{{ batch.batch_number }}" {% if batch.batch_number == selected_batch %}selected{% endif %}>{{ batch.batch_number }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="course">Course:</label>
+        <select name="course" id="course" class="form-control">
+            <option value="">All Courses</option>
+            {% for course in courses %}
+                <option value="{{ course.title }}" {% if course.title == selected_course %}selected{% endif %}>{{ course.title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="batch_status">Status:</label>
+        <select name="batch_status" id="batch_status" class="form-control">
+            <option value="">All Statuses</option>
+            {% for stat, display in batch_status %}
+                <option value="{{ stat }}" {% if stat == selected_status %}selected{% endif %}>{{ display }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-success">Filter</button>
+        <a href="{% url 'batchapp:batch_list' %}" class="ml-2">
+            <button type="button" class="btn btn-primary mt-2">Clear Filter</button>
+        </a>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="mt-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="font-14">Batches</h5>
+                    <p class="sub-header">List of all batches and tagged course details</p>
+                </div>
+                <!-- Export Buttons -->
+                <div>
+                    <button class="btn btn-outline-success btn-sm" onclick="exportTableToExcel('batchesTable')">
+                        📊 Export to Excel
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm" onclick="exportTableToPDF('batchesTable')">
+                        📄 Export to PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="batchesTable" class="table table-bordered table-striped table-hover m-0">
+                    <thead class="thead-theme-custom">
+                        <tr>
+                            <th>Batch<br>Number</th>
+                            <th>Course</th>
+                            <th>Start &mdash; End Dates</th>
+                            <th>Class Details</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                            <th>Registrations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if batches %}
+                            {% for batch in batches %}
+                                <tr>
+                                    <td>{{ batch.batch_number }}
+                                        <br>
+                                        {% if batch.youtube_link %}
+                                        <a href="{{ batch.youtube_link }}" target="_blank" rel="noopener noreferrer">
+                                            <img src="{% static 'frontend_assets/images/youtube.png' %}" width="20">
+                                        </a>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ batch.course }}</td>
+                                    <td>
+                                        {{ batch.get_start_end_dates }}
+                                        <br>
+                                        {% if batch.tentative %}<span class="badge badge-info">Tentative</span>{% endif %}
+                                    </td>
+                                    <td>
+                                        {{ batch.start_time|date:"h:i a" }} - {{ batch.end_time|date:"h:i a" }} IST<br>
+                                        {% with batch.days|cut:", "|split:"," as days %}
+                                            <div>
+                                                {% for day in days %}
+                                                    {% with day|trim as trimmed_day %}
+                                                        {% if trimmed_day == "Monday" %}
+                                                            <span class="badge badge-pill" style="background-color: #f5222d;">M</span>
+                                                        {% elif trimmed_day == "Tuesday" %}
+                                                            <span class="badge badge-success badge-pill">T</span>
+                                                        {% elif trimmed_day == "Wednesday" %}
+                                                            <span class="badge badge-warning badge-pill">W</span>
+                                                        {% elif trimmed_day == "Thursday" %}
+                                                            <span class="badge badge-pill" style="background-color: #eb2f96;">Th</span>
+                                                        {% elif trimmed_day == "Friday" %}
+                                                            <span class="badge badge-pill" style="background-color: #722ed1;">F</span>
+                                                        {% elif trimmed_day == "Saturday" %}
+                                                            <span class="badge badge-dark badge-pill">Sa</span>
+                                                        {% elif trimmed_day == "Sunday" %}
+                                                            <span class="badge badge-info badge-pill">S</span>
+                                                        {% endif %}
+                                                    {% endwith %}
+                                                {% endfor %}
+                                            </div>
+                                            <span style="font-size: 0.7rem;">({{ days|length }} days per week)</span>
+                                        {% endwith %}
+                                    </td>
+                                    <td>
+                                        {% if batch.status == 'created' %}
+                                            Created
+                                        {% elif batch.status == 'open' %}
+                                            Registrations Open
+                                        {% elif batch.status == 'freezed' %}
+                                            Freezed
+                                        {% elif batch.status == 'completed' %}
+                                            Completed
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'batchapp:edit_batch' batch.pk %}">
+                                            <button type="button" class="btn btn-primary btn-sm" title="Edit">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                        </a>
+                                        <br>
+                                        {% if batch.status == 'created' %}
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <button name="action" value="open_registrations" type="submit" class="btn btn-success btn-sm mt-1" title="Open Registrations">
+                                                    <i class="fa fa-lock-open"></i>
+                                                </button>
+                                            </form>
+                                        {% elif batch.status == 'open' %}
+                                            <button type="button" class="btn btn-warning btn-sm freeze-batch-modal mt-1" data-toggle="modal"
+                                                data-batch="{{ batch.batch_number }}" data-batch-id="{{ batch.id }}" data-target="#freezeBatchModal">
+                                                <i class="fa fa-lock"></i>
+                                            </button>
+                                        {% elif batch.status == 'freezed' %}
+                                            <button type="button" class="btn btn-success btn-sm complete-batch-modal mt-1" data-toggle="modal"
+                                                data-batch="{{ batch.batch_number }}" data-batch-id="{{ batch.id }}" data-target="#completeBatchModal">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        {% endif %}
+                                        <br>
+                                        <button type="button" class="btn btn-danger btn-sm delete-batch-modal mt-1" data-toggle="modal"
+                                            data-batch="{{ batch.batch_number }}" data-batch-delete-action="{% url 'batchapp:batch_delete' batch.pk %}"
+                                            data-target="#deleteBatchModal">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        Registered: {{ batch.total_students|intcomma }}<br>
+                                        Payment pending: {{ batch.pending_students|intcomma }}/{{ batch.total_students|intcomma }}<br>
+                                        Deactivated: {{ batch.deactivated_students|intcomma }}/{{ batch.total_students|intcomma }}<br>
+                                        Reserved: {{ batch.reserved_students|intcomma }}/{{ batch.total_students|intcomma }}<br>
+                                        Confirmed: {{ batch.confirmed_students|intcomma }}/{{ batch.total_students|intcomma }}<br>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="7" style="text-align: center;">No Batches Available</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+
+<!-- Export Functions -->
+<script>
+function exportTableToExcel(tableId, filename = 'batches.xlsx') {
+    const table = document.getElementById(tableId);
+    const wb = XLSX.utils.table_to_book(table, { sheet: "Batches" });
+    XLSX.writeFile(wb, filename);
+}
+
+function exportTableToPDF(tableId, filename = 'batches.pdf') {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const table = document.getElementById(tableId);
+    const headers = [];
+    const rows = [];
+
+    // Collect headers
+    table.querySelectorAll('thead tr th').forEach(th => {
+        headers.push(th.innerText.trim());
+    });
+
+    // Collect rows
+    table.querySelectorAll('tbody tr').forEach(tr => {
+        const row = [];
+        tr.querySelectorAll('td').forEach(td => {
+            row.push(td.innerText.trim());
+        });
+        rows.push(row);
+    });
+
+    doc.autoTable({
+        head: [headers],
+        body: rows,
+        styles: { fontSize: 8 },
+        margin: { top: 10 }
+    });
+
+    doc.save(filename);
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'adminapp/base.html' %}
+{% block content %}
+
+<!-- Start Row -->
+<div class="row">
+    <div class="col-12">
+        <div>
+            <h4 class="header-title mb-3 d-flex align-items-center justify-content-between">
+                <div>
+                    <a href="{% url 'adminapp:admin_home' %}">Admin Home</a> / Students / Stories
+                </div>
+            </h4>
+        </div>
+    </div>
+</div>
+<!-- End Row -->
+
+<!-- Course Feedback Section -->
+<section id="course-feedback" class="mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm rounded-4 border-0" style="background-color: #f8f9fa;"> <!-- light background -->
+                <div class="card-body p-4">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover m-0 w-100 align-middle text-center" style="background-color: #ffffff;">
+                            <thead style="background-color: #29c2e1; color: white;">
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Course Name</th>
+                                    <th>Course Duration</th>
+                                    <th>Trainer Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Comment</th>
+                                    <th>Rating</th>
+                                    <th>Actions</th> <!-- Only 8 columns -->
+                                </tr>
+                            </thead>
+                            <tbody style="background-color: #f8f9fa;"> <!-- light grey background for body -->
+                                {% if course_feedbacks %}
+                                    {% for feedback in course_feedbacks %}
+                                    <tr>
+                                        <td><b>{{ feedback.user.first_name }} {{ feedback.user.last_name }}</b></td>
+                                        <td><b>{{ feedback.course.title }}</b></td>
+                                        <td><span style="font-size: 0.8rem;">{{ feedback.course.duration }} days</span></td>
+                                        <td><b>{{ feedback.trainer.name }}</b></td>
+                                        <td><span style="font-size: 0.8rem;">{{ feedback.trainer.phone_number }}</span></td>
+                                        <td style="max-width: 300px; word-break: break-word;">
+                                            <span style="font-size: 0.8rem;">{{ feedback.comment }}</span>
+                                        </td>
+                                        <td><span class="badge bg-success badge-pill">{{ feedback.rating }}</span></td>
+                                        <td class="d-flex justify-content-center gap-2">
+                                            <a href="{% url 'trainers:approve_feedback' feedback.id %}" class="btn btn-success btn-sm" title="Approve Feedback">
+                                                <i class="fa fa-check-circle fa-md"></i>
+                                            </a>
+                                            <a href="{% url 'trainers:reject_feedback' feedback.id %}" class="btn btn-warning btn-sm" title="Mark as Issue">
+                                                <i class="fa fa-exclamation-triangle fa-md"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="8" class="text-center py-4 text-muted">No feedback available yet!</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

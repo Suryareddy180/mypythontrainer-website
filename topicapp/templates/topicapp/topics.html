@@ -1,0 +1,147 @@
+{% extends 'topicapp/base.html' %}
+
+{% block content %}
+
+<!-- start row -->
+<div class="row">
+	<div class="col-12">
+		<div>
+			<h4 class="header-title mb-3">
+				<a href="{% url 'adminapp:admin_home' %}">Admin Home</a> / Topics
+			</h4>
+		</div>
+	</div>
+</div>
+<!-- end row -->
+
+<!-- row -->
+<div class="row">
+
+	<!-- Delete Topic Modal -->
+	<div id="deleteTopicModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="deleteTopicModalLabel">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="deleteTopicModalLabel">Delete Confirmation</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+				</div>
+				<div class="modal-body">
+					<p>Are you sure want to delete Topic - <b><span id="modalTopic"></span></b>?</p>
+					<div class="alert alert-danger">
+						Be careful, action can't be undone!
+					</div>
+				</div>
+				<div class="modal-footer">
+					<form id="deleteTopicModalForm" method="post">
+						{% csrf_token %}
+						<button type="submit" value="Submit" class="btn btn-danger ml-3">Yes, Delete</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-8">
+		<div class="mt-3">
+			<h5 class="font-14">Topics</h5>
+			<p class="sub-header">List of all topics and details</p>
+
+			<!-- Export Buttons -->
+			<div class="d-flex justify-content-end mb-2">
+				<button onclick="exportTableToExcel('topicTable')" class="btn btn-outline-success btn-sm mr-2">
+					📊 Export Excel
+				</button>
+				<button onclick="exportTableToPDF('topicTable')" class="btn btn-outline-danger btn-sm">
+					📄 Export PDF
+				</button>
+			</div>
+
+			<div class="table-responsive">
+				<table id="topicTable" class="table table-bordered table-striped table-hover m-0">
+					<thead class="thead-theme-custom">
+						<tr>
+							<th>Topic Name</th>
+							<th>Duration (days)</th>
+							<th>Status</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if topics %}
+							{% for topic in topics %}
+							<tr>
+								<td>{{ topic.topic_name }}</td>
+								<td>{{ topic.duration }}</td>
+								<td>{% if topic.status %} Active {% else %} Inactive {% endif %}</td>
+								<td>
+									<form method="post" action="{% url 'topicapp:topic_toggle_status' topic.pk %}">
+										{% csrf_token %}
+										<input type="hidden" name="topic_id" value="{{ topic.id }}">
+										<button
+											class="{% if topic.status %} btn btn-sm btn-warning btn-bordered-warning {% else %} btn btn-sm btn-success btn-bordered-success {% endif %} ml-1"
+											type="submit" data-toggle="tooltip" data-placement="top"
+											title="{% if topic.status %}De-Activate{% else %}Activate{% endif %}">
+											{% if topic.status %}
+												<i class="fa fa-exclamation-triangle fa-md"></i>
+											{% else %}
+												<i class="fa fa-check-circle fa-md"></i>
+											{% endif %}
+										</button>
+									</form>
+								</td>
+							</tr>
+							{% endfor %}
+						{% else %}
+							<tr>
+								<td colspan="4" style="text-align: center;">No Topics Available</td>
+							</tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+
+<script>
+function exportTableToExcel(tableId, filename = 'topics.xlsx') {
+	const table = document.getElementById(tableId);
+	const wb = XLSX.utils.table_to_book(table, { sheet: "Topics" });
+	XLSX.writeFile(wb, filename);
+}
+
+async function exportTableToPDF(tableId, filename = 'topics.pdf') {
+	const { jsPDF } = window.jspdf;
+	const doc = new jsPDF();
+	const table = document.getElementById(tableId);
+
+	let headers = [];
+	let rows = [];
+
+	table.querySelectorAll("thead tr th").forEach(th => {
+		headers.push(th.innerText.trim());
+	});
+
+	table.querySelectorAll("tbody tr").forEach(row => {
+		let rowData = [];
+		row.querySelectorAll("td").forEach(td => {
+			rowData.push(td.innerText.trim());
+		});
+		rows.push(rowData);
+	});
+
+	doc.autoTable({
+		head: [headers],
+		body: rows
+	});
+
+	doc.save(filename);
+}
+</script>
+
+{% endblock %}

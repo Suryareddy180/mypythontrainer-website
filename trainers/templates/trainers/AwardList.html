@@ -1,0 +1,35 @@
+{% extends 'adminapp/base.html' %}
+{% block content %}
+
+<!-- start row  -->
+<div class="row">
+     <div class="col-12">
+          <div>
+               <h4 class="header-title mb-3">
+
+
+
+               </h4>
+          </div>
+     </div>
+</div>
+<!-- end row -->
+
+<!-- row -->
+<div class="row">
+     <div class="col-lg-12">
+          <div class="mt-3">
+               <h1><strong><b> AVAILABLE QUALIFICATIONS</b></strong></h1>
+             <ul>
+                  {% for A in awd %}
+                  <li>
+                       <h2><strong>{{A.short_title}}</strong></h2>
+                  </li>
+                  {% endfor %}
+             </ul>
+
+          </div>
+     </div>
+</div>
+
+{% endblock %}

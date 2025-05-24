@@ -1,0 +1,42 @@
+<!-- NOT USED -->
+{% extends 'userapp/base.html' %}
+<!--load crispy form-->
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 mx-auto">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <!-- create a legend -->
+                            <legend class="border-bottom mb-4">
+
+                                Login
+                            </legend>
+                            {{form|crispy}}
+                        </fieldset>
+                        <!-- create a button -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-info btn-block">Login</button>
+                        </div>
+                    </form>
+                    <!-- if already having account -->
+                    <div class="pt-2">
+                        <small class="text-muted">Forgot your password?
+                            <a href="{% url 'userapp:password_reset' %}" class="ml-3">Reset</a>
+                        </small>
+                        <br>
+                        <small class="text-muted">Need an Account?
+                            <a href="{% url 'userapp:register-student' %}" class="ml-3">Sign Up</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

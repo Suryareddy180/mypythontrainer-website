@@ -1,0 +1,168 @@
+{% extends 'studentapp/base.html' %}
+{% load humanize %}
+{% load custom_filters %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div>
+            <h4 class="header-title mb-3">
+                <a href="{% url 'adminapp:admin_home' %}">Admin Home</a> / Registrations / Enrollments
+            </h4>
+        </div>
+    </div>
+</div>
+
+<!-- Filter Form -->
+<form method="get" class="row mb-4">
+    <div class="col-md-3">
+        <label for="batch">Batch:</label>
+        <select name="batch" id="batch" class="form-control">
+            <option value="">All Batches</option>
+            {% for batch in batches %}
+                <option value="{{ batch.batch_number }}" {% if batch.batch_number == selected_batch %}selected{% endif %}>{{ batch.batch_number }} {% if batch.status == 'open' %}(Registration Open){% endif %}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label for="course">Course:</label>
+        <select name="course" id="course" class="form-control">
+            <option value="">All Courses</option>
+            {% for course in courses %}
+                <option value="{{ course.title }}" {% if course.title == selected_course %}selected{% endif %}>{{ course.title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="col-md-3">
+        <label for="enrollment_status">Enrollment Status:</label>
+        <select name="enrollment_status" id="enrollment_status" class="form-control">
+            <option value="">All Statuses</option>
+            {% for status, display in enrollment_statuses %}
+                <option value="{{ status }}" {% if status == selected_enrollment_status %}selected{% endif %}>{{ display }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="col-md-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-success">Filter</button>
+        <a href="{% url 'studentapp:view_students' %}" class="btn btn-primary ms-2">Clear Filter</a>
+    </div>
+</form>
+
+<!-- Enrollment Table -->
+<div class="table-responsive">
+    <table id="studentData" class="table table-bordered table-striped table-hover m-0">
+        <thead class="thead-theme-custom">
+            <tr>
+                <th>Student Details</th>
+                <th>Course Details</th>
+                <th>Enrollment Details</th>
+                <th>Booking Amount</th>
+                <th>Confirmation Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enrollment in students_data %}
+            <tr>
+                <!-- Student Details -->
+                <td>
+                    <b>{{ enrollment.user.user.first_name|capfirst }} {{ enrollment.user.user.last_name|capfirst }}</b><br>
+                    <span style="font-size: 0.7rem;">
+                        <u>{{ enrollment.user.user.email }}</u><br>
+                        {{ enrollment.user.mobile_number }}
+                    </span>
+                </td>
+
+                <!-- Course Details -->
+                <td>
+                    <b>{{ enrollment.batch.course.title }}</b> (<i>{{ enrollment.batch.batch_number }}</i>)<br>
+                    <span style="font-size: 0.7rem;">
+                        {{ enrollment.batch.start_date|date:"d M, y" }} ({{ enrollment.batch.duration|course_duration_round }} months)<br>
+                        {{ enrollment.batch.start_time }} - {{ enrollment.batch.end_time }} IST
+                    </span>
+                </td>
+
+                <!-- Enrollment Status -->
+                <td>
+                    <b>{{ enrollment.enrollment_status|capfirst }}</b><br>
+                    <span style="font-size: 0.7rem;">
+                        {{ enrollment.enrollment_date|date:"d M, y @ h:i a" }} IST
+                    </span><br>
+                    {% if enrollment.all_links_accessible %}
+                        <span class="badge bg-success badge-pill">Access Provided</span>
+                    {% else %}
+                        <span class="badge bg-warning badge-pill">No Access</span>
+                    {% endif %}
+                </td>
+
+                <!-- Booking Amount -->
+                <td>
+                    {% if enrollment.full_status %}
+                        {% if enrollment.adv_status %}
+                            <span class="badge bg-success badge-pill">Paid</span> ₹{{ enrollment.adv_fee|intcomma }}<br>
+                            <span style="font-size: 0.7rem;">
+                                {{ enrollment.adv_payment_date|date:"M d, Y h:i a" }} IST<br>
+                                {{ enrollment.adv_transaction_id }}
+                            </span>
+                        {% else %}
+                            Not applicable
+                        {% endif %}
+                    {% else %}
+                        {% if enrollment.adv_status %}
+                            <span class="badge bg-success badge-pill">Paid</span> ₹{{ enrollment.adv_fee|intcomma }}<br>
+                            <span style="font-size: 0.7rem;">
+                                {{ enrollment.adv_payment_date|date:"M d, Y h:i a" }} IST<br>
+                                {{ enrollment.adv_transaction_id }}
+                            </span>
+                        {% else %}
+                            ₹{{ enrollment.adv_fee|intcomma }} /-<br>
+                            <span class="badge bg-danger badge-pill">Payment Pending</span>
+                        {% endif %}
+                    {% endif %}
+                </td>
+
+                <!-- Confirmation Amount (updated logic) -->
+                <td>
+                    {% if enrollment.full_status %}
+                        {% if enrollment.adv_status %}
+                            <span class="badge bg-success badge-pill">Paid</span> ₹{{ enrollment.course_fee|subtract:enrollment.adv_fee|intcomma }}<br>
+                            <span style="font-size: 0.7rem;">
+                                {{ enrollment.full_payment_date|date:"M d, Y h:i A" }} IST<br>
+                                {{ enrollment.full_transaction_id }}
+                            </span>
+                        {% else %}
+                            <span class="badge bg-success badge-pill">Paid</span> ₹{{ enrollment.course_fee|intcomma }}<br>
+                            <span style="font-size: 0.7rem;">
+                                {{ enrollment.full_payment_date|date:"M d, Y h:i A" }} IST<br>
+                                {{ enrollment.full_transaction_id }}
+                            </span>
+                        {% endif %}
+                    {% else %}
+                        {% if enrollment.adv_status %}
+                            ₹{{ enrollment.course_fee|subtract:enrollment.adv_fee|subtract:enrollment.fee_discount|intcomma }} /-
+                        {% else %}
+                            ₹{{ enrollment.course_fee|subtract:enrollment.fee_discount|intcomma }} /-
+                        {% endif %}
+                        <br>
+                        <span class="badge bg-danger badge-pill">Payment Pending</span>
+                    {% endif %}
+                </td>
+
+                <!-- Actions (Discount Button) -->
+                <td class="text-center">
+                    <a href="{% url 'studentapp:add_discount' enrollment.id %}" class="btn" style="background-color: #d9f99d; padding: 10px; border-radius: 10px;">
+                        <img src="{% static 'userapp/images/create_icon.png' %}" alt="Edit" style="height: 30px; width: 30px;">
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

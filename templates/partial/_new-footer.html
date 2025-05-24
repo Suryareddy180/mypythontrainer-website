@@ -1,0 +1,155 @@
+{% load static %}
+<style>
+    .go-to-top-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #f08d27;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        padding: 5px 12px;
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+        z-index: 9999;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .go-to-top-btn:hover {
+        background-color: #e07b1b;
+        transform: scale(1.2);
+    }
+
+    .go-to-top-btn i {
+        margin: 0;
+    }
+
+    .show-go-to-top {
+        display: block;
+    }
+</style>
+<!-- Go to Top Button -->
+<button id="goToTopBtn" title="Go to Top" class="go-to-top-btn">
+    <i class="fa fa-arrow-up"></i>
+</button>
+<footer id="footer">
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="footer-content d-flex flex-column justify-content-center mt-5">
+                <a href="/" class="navbar-brand">
+                    <img src="{% static 'frontend_assets/images/logo-1.png' %}" alt="Logo" width="160">
+                </a>
+                <ul class="navbar-nav d-flex flex-row justify-content-center gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/home/' %}active{% endif %}" href="{% url 'userapp:new_index_page' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/trainers/' %}active{% endif %}" href="{% url 'userapp:new_about_page' %}">Trainers</a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link {% if request.path == '/courses/' %}active{% endif %}" href="{% url 'userapp:new_courses_page' %}">Courses Offering</a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/course-calendar/' %}active{% endif %}" href="{% url 'userapp:new_courses_calendar_page' %}">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/stories/' %}active{% endif %}" href="{% url 'userapp:new_stories_page' %}">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="{% url 'userapp:new_contact_page' %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/privacy-policy/' %}active{% endif %}" href="{% url 'userapp:privacy_policy' %}">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/terms-conditions/' %}active{% endif %}" href="{% url 'userapp:terms_conditions' %}">Terms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/refund-policy/' %}active{% endif %}" href="{% url 'userapp:refund_policy' %}">Refunds</a>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="ant-space social-icons">
+                <div class="ant-space-item">
+                    <a href="http://www.linkedin.com/in/python-trainer-helper" target="_blank">
+                        <span role="img" aria-label="linkedin" class="anticon anticon-linkedin">
+                            <svg viewBox="64 64 896 896" focusable="false" data-icon="linkedin" width="1em" height="1em"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zM349.3 793.7H230.6V411.9h118.7v381.8zm-59.3-434a68.8 68.8 0 1168.8-68.8c-.1 38-30.9 68.8-68.8 68.8zm503.7 434H675.1V608c0-44.3-.8-101.2-61.7-101.2-61.7 0-71.2 48.2-71.2 98v188.9H423.7V411.9h113.8v52.2h1.6c15.8-30 54.5-61.7 112.3-61.7 120.2 0 142.3 79.1 142.3 181.9v209.4z">
+                                </path>
+                            </svg></span></a>
+                </div>
+
+                <div class="ant-space-item">
+                    <!-- X SVG
+                    <svg fill-rule="evenodd" viewBox="64 64 896 896" focusable="false" data-icon="x" width="1em" height="1em"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M921 912L601.11 445.75l.55.43L890.08 112H793.7L558.74 384 372.15 112H119.37l298.65 435.31-.04-.04L103 912h96.39L460.6 609.38 668.2 912zM333.96 184.73l448.83 654.54H706.4L257.2 184.73z">
+                                </path>
+                            </svg> 
+                    -->
+
+                    <a href="http://www.youtube.com/@python.trainer.helper" target="_blank">
+                        <span role="img" aria-label="x" class="anticon anticon-x">
+                            <svg viewBox="64 64 896 896" focusable="false" data-icon="youtube" width="1em" height="1em" fill="currentColor"
+                                aria-hidden="true">
+                                <path
+                                    d="M941.2 296.4c-11.2-41.9-43.8-74.5-85.8-85.7C784 192 512 192 512 192s-272 0-343.4 18.7c-42 11.2-74.5 43.8-85.8 85.7C64 368 64 512 64 512s0 144 18.8 215.6c11.2 41.9 43.8 74.5 85.8 85.7C240 832 512 832 512 832s272 0 343.4-18.7c42-11.2 74.5-43.8 85.8-85.7 18.8-71.6 18.8-215.6 18.8-215.6s0-144-18.8-215.6zM425.6 640V384l234.7 128L425.6 640z">
+                                </path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- FACEBOOK SVG
+                <div class="ant-space-item">
+                    <a href="/">
+                        <span role="img" aria-label="facebook" class="anticon anticon-facebook"><svg
+                                viewBox="64 64 896 896" focusable="false" data-icon="facebook" width="1em" height="1em"
+                                fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-92.4 233.5h-63.9c-50.1 0-59.8 23.8-59.8 58.8v77.1h119.6l-15.6 120.7h-104V912H539.2V602.2H434.9V481.4h104.3v-89c0-103.3 63.1-159.6 155.3-159.6 44.2 0 82.1 3.3 93.2 4.8v107.9z">
+                                </path>
+                            </svg></span></a>
+                </div>
+                -->
+
+                <div class="ant-space-item">
+                    <a href="https://www.instagram.com/python.trainer.helper" target="_blank"><span role="img" aria-label="instagram" class="anticon anticon-instagram">
+                            <svg viewBox="64 64 896 896" focusable="false" data-icon="instagram" width="1em"
+                                height="1em" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M512 378.7c-73.4 0-133.3 59.9-133.3 133.3S438.6 645.3 512 645.3 645.3 585.4 645.3 512 585.4 378.7 512 378.7zM911.8 512c0-55.2.5-109.9-2.6-165-3.1-64-17.7-120.8-64.5-167.6-46.9-46.9-103.6-61.4-167.6-64.5-55.2-3.1-109.9-2.6-165-2.6-55.2 0-109.9-.5-165 2.6-64 3.1-120.8 17.7-167.6 64.5C132.6 226.3 118.1 283 115 347c-3.1 55.2-2.6 109.9-2.6 165s-.5 109.9 2.6 165c3.1 64 17.7 120.8 64.5 167.6 46.9 46.9 103.6 61.4 167.6 64.5 55.2 3.1 109.9 2.6 165 2.6 55.2 0 109.9.5 165-2.6 64-3.1 120.8-17.7 167.6-64.5 46.9-46.9 61.4-103.6 64.5-167.6 3.2-55.1 2.6-109.8 2.6-165zM512 717.1c-113.5 0-205.1-91.6-205.1-205.1S398.5 306.9 512 306.9 717.1 398.5 717.1 512 625.5 717.1 512 717.1zm213.5-370.7c-26.5 0-47.9-21.4-47.9-47.9s21.4-47.9 47.9-47.9 47.9 21.4 47.9 47.9a47.84 47.84 0 01-47.9 47.9z">
+                                </path>
+                            </svg></span></a>
+                </div>
+
+                <div class="ant-space-item">
+                    <a href="https://whatsapp.com/channel/0029Va9Tj7j0AgW8byyzl81j" target="_blank">
+                        <span role="img" aria-label="instagram" class="anticon anticon-instagram">
+                            <svg viewBox="64 64 896 896" focusable="false" data-icon="whatsapp" width="1em" height="1em" fill="currentColor"
+                                aria-hidden="true">
+                                <path
+                                    d="M511.6 64C264.2 64 64 264.2 64 511.6c0 91.6 24.4 181 70.8 260.4L64 960l188.8-71.2c77.4 43.2 164.8 65.6 258.8 65.6 247.4 0 447.6-200.2 447.6-447.6C959.2 264.2 759 64 511.6 64zm256.4 647.8c-11.2 31-55.4 57-76 58.8-20.6 1.8-40 11.2-136.6-28.6-115.4-45-189.8-155.6-195.6-163.6-5.8-8-47-62.2-47-118.8s29.2-84.6 39.6-96.2 21.2-12 28.6-12h20.6c6.4 0 15 0.2 22.4 16.4 8.6 18.8 27.2 65 29.6 69.6 2.2 4.6 4.2 10.2 0.2 16.2-4 6-6.2 9.6-12.4 15.8s-12.4 12.4-18.6 18.6c-6.2 6.2-12.4 12.6-5.6 25.4 7 12.8 31.4 54.4 67.2 88.4 46.2 44 84 58.6 98.6 65 14.6 6.4 23.2 5.6 31.6-3.2s36.4-41.8 46.2-56c9.6-14.2 19.8-12 32.4-6.6 12.6 5.4 79 37.2 92.6 44.2s21.4 10.2 24.6 15.8c3.4 5.6 3.4 32-7.8 63z">
+                                </path>
+                                <path
+                                    d="M704.8 480.6l-25.6 37.4c-6.4 9.2-19.8 12.6-29.6 7-19.2-10.4-40.6-24.6-65.6-45.4s-44.8-46.8-54.2-66c-5.8-10.2-3-23.2 6.2-29.6l36-25.4c9-6.4 21-5.6 28.8 2.2l20.2 20.2c7.8 7.8 19.2 15.2 28.2 18.6 9 3.4 14.8 1.6 18.2-4.8l12-21c3.2-6.4 9.8-13.4 16-15.2l41.8-12c6.2-1.8 12.6-0.6 17.4 4.2s6.2 11.4 4.4 17.6l-12 42.6c-2 6.4-8.8 12.4-15.6 15.6z">
+                                </path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="copyright d-flex justify-content-center align-items-center">
+        <span class="ant-typography text-light">&copy; 2024 My Python Trainer &bull; All Rights Reserved (⚡ by <a
+                href="https://jcwebtechnologies.com/?ref=mypyt_footer" target="_blank">JCWT</a> )</span>
+    </div>
+</footer>

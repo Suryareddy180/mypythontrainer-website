@@ -1,0 +1,31 @@
+{% extends 'courseapp/base.html' %}
+{% block content%}
+
+<!-- USED -->
+<!-- start row  -->
+<div class="row">
+    <div class="col-12">
+        <div>
+            <h4 class="header-title">
+                <a href="{% url 'adminapp:admin_home' %}">Admin Home</a> / <a
+                    href="{% url 'courseapp:course_list' %}">Course</a> / Add Course
+            </h4>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="mt-3">
+            <h4 class="mb-3">Delete Confirmation</h4>
+            <form method="post">
+                {% csrf_token %}
+                <p class="text-secondary">Are you sure want to delete <b>Course "{{object.title}}"</b> ?</p>
+                <a href="{% url 'courseapp:course_list' %}" class="btn btn-success">Go Back to Courses</a>
+                <button type="submit" value="Submit" class="btn btn-danger ml-3">Yes, Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,228 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+{% block title %}Courses{% endblock %}
+{% block content %}
+
+<section id="offer">
+    <div class="container">
+        <div class="row">
+            {% if courses %}
+            {% for course in courses %}
+            <div class="course-card mb-4">
+                <div class="card-head d-flex justify-content-between">
+                    <h5 class="course-title text-center">{{ course.title }}</h5>
+                    <div class="ant-ribbon">
+                        <span class="ant-ribbon-text">Next Batch - {{ course.batch_info.start_date }}, Batch-{{ course.batch_info.batch_number }}</span>
+                        <div class="ant-ribbon-corner"></div>
+                    </div>
+                </div>
+                <div class="course-card-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-3">
+                            <img src="{% static course.image %}" class="course-image img-fluid" alt="{{ course.title }}">
+                        </div>
+
+                        <div class="col-md-8 col-lg-9 justify-content-between d-flex flex-column">
+                            <div class="col-12 justify-content-between d-flex flex-sm-row">
+                                <p class="course-description">
+                                    <p class="course-description">
+                                    {{ course.description|truncatewords:30 }}
+                                </p>
+                                <div class="price-sec">
+                                    <div class="ant-space-item">
+                                        <h1 class="ant-typography" style="margin: 0px;">₹{{ course.fees|intcomma }}/-</h1>
+                                    </div>
+                                    <a href="{% url 'userapp:new_courses_calendar_page' %}" class="btn btn-primary buy-now-btn">More Info</a>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="card-info d-flex justify-content-between">
+                                    <div class="card_left">
+                                        <div class="card_head d-flex align-items-center">
+                                            <div class="ant-avatar">
+                                                <img src="{% static 'frontend_assets/images/instructor.jpg' %}" alt="{{ course.trainer_info.name }}">
+                                            </div>
+                                            <div class="card_text">
+                                                <div class="ant-space-item">
+                                                    <a href="about.html">
+                                                        <span class="ant-typography"><u>{{ course.trainer_info.name }}</u></span></a>
+                                                </div>
+                                                <div class="ant-space-item">
+                                                    <span class="ant-typography"><strong>{{ course.trainer_info.qualification }}</strong></span>
+                                                </div>
+                                                <div class="ant-space-item">
+                                                    <span class="ant-typography">Training Exp: {{ course.trainer_info.training_exp }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card_end">
+                                            <div class="card-rating">
+                                                <span>{{ course.trainer_info.rating }}</span>
+                                                {% for i in "12345" %}
+                                                    {% with star_value=i|add:0 %}
+                                                        {% if star_value <= course.trainer_info.rating %}
+                                                            <span class="star"><i class="fas fa-star"></i></span>
+                                                        {% elif star_value|add:0.5 == course.trainer_info.rating %}
+                                                            <span class="star"><i class="fas fa-star-half-alt"></i></span>
+                                                        {% else %}
+                                                            <span class="star"><i class="far fa-star"></i></span>
+                                                        {% endif %}
+                                                    {% endwith %}
+                                                {% endfor %}
+                                                <span class="ant-typography">(100+)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-right">
+                                        <div class="course-timings">
+                                            <div class="item mb-2">
+                                                <span><svg viewBox="64 64 896 896" focusable="false"
+                                                        data-icon="field-time" width="1em" height="1em"
+                                                        fill="currentColor" aria-hidden="true">
+                                                        <defs>
+                                                            <style></style>
+                                                        </defs>
+                                                        <path
+                                                            d="M945 412H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h256c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM811 548H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h122c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM477.3 322.5H434c-6.2 0-11.2 5-11.2 11.2v248c0 3.6 1.7 6.9 4.6 9l148.9 108.6c5 3.6 12 2.6 15.6-2.4l25.7-35.1v-.1c3.6-5 2.5-12-2.5-15.6l-126.7-91.6V333.7c.1-6.2-5-11.2-11.1-11.2z">
+                                                        </path>
+                                                        <path
+                                                            d="M804.8 673.9H747c-5.6 0-10.9 2.9-13.9 7.7a321 321 0 01-44.5 55.7 317.17 317.17 0 01-101.3 68.3c-39.3 16.6-81 25-124 25-43.1 0-84.8-8.4-124-25-37.9-16-72-39-101.3-68.3s-52.3-63.4-68.3-101.3c-16.6-39.2-25-80.9-25-124 0-43.1 8.4-84.7 25-124 16-37.9 39-72 68.3-101.3 29.3-29.3 63.4-52.3 101.3-68.3 39.2-16.6 81-25 124-25 43.1 0 84.8 8.4 124 25 37.9 16 72 39 101.3 68.3a321 321 0 0144.5 55.7c3 4.8 8.3 7.7 13.9 7.7h57.8c6.9 0 11.3-7.2 8.2-13.3-65.2-129.7-197.4-214-345-215.7-216.1-2.7-395.6 174.2-396 390.1C71.6 727.5 246.9 903 463.2 903c149.5 0 283.9-84.6 349.8-215.8a9.18 9.18 0 00-8.2-13.3z">
+                                                        </path>
+                                                    </svg></span>
+                                                <span class="text-dark">{% widthratio course.duration 30 1 %} months</span>
+                                            </div>
+                                            <div class="item mb-2 d-flex">
+                                                <svg viewBox="64 64 896 896" focusable="false" data-icon="calendar"
+                                                    width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                                    <path
+                                                        d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z">
+                                                    </path>
+                                                </svg>
+                                                <div class="d-flex justify-content-between gap-2 align-items-center">
+
+                                                    {% with course.batch_info.days|cut:", "|split:"," as days %}
+                                                    {% for day in days %}
+                                                        {% with day|trim as trimmed_day %}
+                                                            {% if trimmed_day == "Monday" %}
+                                                                <span class="ant-badge">
+                                                                    <sup data-show="true" class="badge text-bg-danger" title="M">M</sup>
+                                                                </span>
+                                                            {% elif trimmed_day == "Tuesday" %}
+                                                                <span class="ant-badge">
+                                                                    <sup data-show="true" class="badge text-bg-success" title="T">T</sup>
+                                                                </span>
+                                                            {% elif trimmed_day == "Wednesday" %}
+                                                                <span class="ant-badge">
+                                                                    <sup data-show="true" class="badge text-bg-warning" title="W">W</sup>
+                                                                </span>
+                                                            {% elif trimmed_day == "Thursday" %}
+                                                                <span class="ant-badge">
+                                                                    <sup data-show="true" class="badge text-bg-info" title="T">T</sup>
+                                                                </span>
+                                                            {% elif trimmed_day == "Friday" %}
+                                                                <span class="ant-badge">
+                                                                    <sup class="badge text-bg-secondary" title="F">F</sup>
+                                                                </span>
+                                                            {% elif trimmed_day == "Saturday" %}
+                                                                <span class="ant-badge">
+                                                                    <sup class="badge text-bg-dark" title="S">S</sup>
+                                                                </span>
+                                                            {% endif %}
+                                                        {% endwith %}
+                                                    {% endfor %}
+                                                {% endwith %}
+                                                </div>
+                                            </div>
+                                            <div class="item mb-2">
+                                                <span>
+                                                    <svg viewBox="64 64 896 896" focusable="false"
+                                                        data-icon="clock-circle" width="1em" height="1em"
+                                                        fill="currentColor" aria-hidden="true">
+                                                        <path
+                                                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z">
+                                                        </path>
+                                                        <path
+                                                            d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z">
+                                                        </path>
+                                                    </svg>
+                                                </span>
+                                                <span>
+                                                    {{ course.batch_info.start_time|date:"h:i A" }} - 
+                                                    {{ course.batch_info.end_time|date:"h:i A" }} IST
+                                                </span>
+                                            </div>
+                                            <div class="item m-0">
+                                                <img class="ant-image-img css-lujapw"
+                                                    src="{% static 'frontend_assets/images/youtube.png' %}" width="30">
+
+                                                <a href="{{ course.uploaded_file.url }}" target="_blank" rel="noopener noreferrer">
+                                                    <svg viewBox="64 64 896 896" focusable="false" data-icon="file-pdf"
+                                                        width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                                        <path
+                                                            d="M854.6 288.7c6 6 9.4 14.1 9.4 22.6V928c0 17.7-14.3 32-32 32H192c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32h424.7c8.5 0 16.7 3.4 22.7 9.4l215.2 215.3zM790.2 326L602 137.8V326h188.2zM633.22 637.26c-15.18-.5-31.32.67-49.65 2.96-24.3-14.99-40.66-35.58-52.28-65.83l1.07-4.38 1.24-5.18c4.3-18.13 6.61-31.36 7.3-44.7.52-10.07-.04-19.36-1.83-27.97-3.3-18.59-16.45-29.46-33.02-30.13-15.45-.63-29.65 8-33.28 21.37-5.91 21.62-2.45 50.07 10.08 98.59-15.96 38.05-37.05 82.66-51.2 107.54-18.89 9.74-33.6 18.6-45.96 28.42-16.3 12.97-26.48 26.3-29.28 40.3-1.36 6.49.69 14.97 5.36 21.92 5.3 7.88 13.28 13 22.85 13.74 24.15 1.87 53.83-23.03 86.6-79.26 3.29-1.1 6.77-2.26 11.02-3.7l11.9-4.02c7.53-2.54 12.99-4.36 18.39-6.11 23.4-7.62 41.1-12.43 57.2-15.17 27.98 14.98 60.32 24.8 82.1 24.8 17.98 0 30.13-9.32 34.52-23.99 3.85-12.88.8-27.82-7.48-36.08-8.56-8.41-24.3-12.43-45.65-13.12zM385.23 765.68v-.36l.13-.34a54.86 54.86 0 015.6-10.76c4.28-6.58 10.17-13.5 17.47-20.87 3.92-3.95 8-7.8 12.79-12.12 1.07-.96 7.91-7.05 9.19-8.25l11.17-10.4-8.12 12.93c-12.32 19.64-23.46 33.78-33 43-3.51 3.4-6.6 5.9-9.1 7.51a16.43 16.43 0 01-2.61 1.42c-.41.17-.77.27-1.13.3a2.2 2.2 0 01-1.12-.15 2.07 2.07 0 01-1.27-1.91zM511.17 547.4l-2.26 4-1.4-4.38c-3.1-9.83-5.38-24.64-6.01-38-.72-15.2.49-24.32 5.29-24.32 6.74 0 9.83 10.8 10.07 27.05.22 14.28-2.03 29.14-5.7 35.65zm-5.81 58.46l1.53-4.05 2.09 3.8c11.69 21.24 26.86 38.96 43.54 51.31l3.6 2.66-4.39.9c-16.33 3.38-31.54 8.46-52.34 16.85 2.17-.88-21.62 8.86-27.64 11.17l-5.25 2.01 2.8-4.88c12.35-21.5 23.76-47.32 36.05-79.77zm157.62 76.26c-7.86 3.1-24.78.33-54.57-12.39l-7.56-3.22 8.2-.6c23.3-1.73 39.8-.45 49.42 3.07 4.1 1.5 6.83 3.39 8.04 5.55a4.64 4.64 0 01-1.36 6.31 6.7 6.7 0 01-2.17 1.28z">
+                                                        </path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12">No Courses</div>
+            {% endif %}
+        </div>
+
+        <!-- Pagination -->
+        <div class="row">
+            <div class="col-md-12">
+                {% if courses.has_other_pages %}
+                <ul class="pagination">
+                    {% if courses.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ courses.previous_page_number }}&q={{ request.GET.q }}">&laquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">&laquo;</a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in courses.paginator.page_range %}
+                    {% if courses.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{ i }}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ i }}&q={{ request.GET.q }}">{{ i }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if courses.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{ courses.next_page_number }}&q={{ request.GET.q }}" class="page-link">&raquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">&raquo;</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

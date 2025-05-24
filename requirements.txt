@@ -1,0 +1,11 @@
+python-dotenv==1.0.1
+django-crispy-forms==2.3
+crispy-bootstrap4==2024.10
+razorpay==1.4.2
+mysql-connector-python==9.0.0
+mysqlclient==2.2.4
+setuptools
+python-dateutil==2.9.0.post0
+Django~=5.1.7
+requests~=2.32.3
+django-recaptcha~=4.1.0

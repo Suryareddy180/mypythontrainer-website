@@ -1,0 +1,21 @@
+{% extends 'userapp/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+
+<section id="showcase-inner" class="py-5 text-white">
+  <div class="container">
+      <div class="row text-center">
+          <div class="col-md-12">
+              <h1 class="display-4">Course Registration Page</h1>
+              <div class="text-center">
+                <a href="{% url 'userapp:course_view' %}" class="btn btn-outline-success">Explore</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+{% endblock %}

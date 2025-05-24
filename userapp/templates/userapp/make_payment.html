@@ -1,0 +1,130 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+{% block title %}Make Payment{% endblock %}
+{% block content %}
+
+<section id="complete_python" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 lg-4 mx-auto">
+                <div class="card mt-4 shadow-lg">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="border-bottom mb-4 text-center" style="color: #f08d27;">
+                            Proceed To Payment
+                        </h4>
+                        <div class="mb-4">
+                            <img src="{% static 'frontend_assets/images/payment.png' %}" alt="Logo" width="150">
+                        </div>
+                        <p>Please complete the payment for <b>"{{ student.batch.course.title }}"</b> course enrollment.</p>
+                        <div class="pt-3 mb-4 text-center">
+                            <button type="submit" id="razorpay-btn" 
+                            class="btn btn-block custom-btn">Pay &#8377;{{ amount|intcomma }}</button>
+                        </div>
+						{% if payment_type == 'advance'%}
+							<p>
+								<small>
+									Once you pay the above amount (&#8377;{{booking_amount|intcomma}}), your seat will be <b>booked</b> for the course. To confirm your seat, the remaining amount (&#8377;{{balance_amount|intcomma}}) needs to be paid.                                
+								</small>
+							</p>
+						{% else %}
+							<p>
+								<small>
+									Once you pay the above amount (&#8377;{{amount|intcomma}}), your seat will be <b>confirmed</b> for the course and just, focus on the learning and All the Best!.                                
+								</small>
+							</p>
+						{% endif %}
+                        
+                        <!--<div class="alert alert-info text-start" role="alert">
+                            <p><b>Note to US Customers</b>:<br />
+                                Click above Pay button, Select Pay Later &rarr; Paypal to make payments in USD ($)</p>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        key: "{{ razorpay_key }}",
+        amount: "{{ amount|floatformat:0 }}",
+        currency: "INR",
+        Image: "{% static 'frontend_assets/images/logo-1.png' %}",
+        name: "Python Trainer Helper",
+        prefill: {
+            name: "{{ first_name}} {{ last_name }}",
+            email: "{{ email }}",
+            contact: "{{ mobile_number }}"
+        },
+        theme: {
+            color: "#f08d27"
+        },
+        order_id: "{{ razorpay_order_id }}",
+        handler: function(response) {
+            // Capture the payment details
+            var paymentData = {
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_signature: response.razorpay_signature,
+                student_id: "{{ student_id }}",
+                payment_type: "{{ payment_type }}",
+                amount: "{{ amount }}",
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            };
+
+            // Submit the payment verification form via AJAX
+            $.ajax({
+                url: "{{ callback_url }}",
+                method: "POST",
+                data: paymentData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                success: function(data) {
+                    if (data.status === 'success') {
+                        window.location.href = "{% url 'userapp:payment_success' %}?transaction_id=" + data.transaction_id + "&amount=" + data.amount;
+                    } else {
+                        alert('Payment verification failed: ' + data.message);
+                    }
+                },
+                error: function(error) {
+                    alert('Error during payment verification');
+                }
+            });
+        },
+        retry: {
+            "enabled": true,
+            "max_count": 1,
+        },
+        
+    };
+
+    // initialise razorpay with the options.
+    var razorPayObj = new Razorpay(options);
+
+    // add event listener to the payment button.
+    document.getElementById("razorpay-btn").onclick = function (e) {
+        razorPayObj.open();
+        e.preventDefault();
+    };
+</script>
+{% endblock %}

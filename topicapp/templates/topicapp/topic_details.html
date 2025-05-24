@@ -1,0 +1,52 @@
+{% extends 'courseapp/base.html' %}
+
+{% load humanize %}
+{% block content %}
+
+
+{% if each_tpk %}
+
+<div class="container">
+    <div class="row mb-5 fields mt-5">
+        <div class="col-md-6">
+            <section id="bc" class="mb-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'adminapp:admin_home' %}">Admin Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'topicapp:topic_list' %}">Topics</a>
+                        </li>
+
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{each_tpk.topic_name}}
+                        </li>
+                    </ol>
+                </nav>
+            </section>
+            <ul class="list-group list-group-flush">
+                <h3 class="text-info">Topic Info</h3>
+
+                <li class="list-group-item text-secondary">
+                    Topic Name:
+                    <span class="float-right">{{each_tpk.topic_name}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                    Duration:
+                    <span class="float-right">{{each_tpk.duration}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                    Status:
+                    <span class="float-right">{{each_tpk.status}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'courseapp/base.html' %}
+
+{% load humanize %}
+{% block content %}
+
+{% if each_one %}
+
+<!-- NOT USED -->
+
+<div class="container">
+    <div class="row mb-5 fields mt-5">
+        <div class="col-md-6">
+            <section id="bc" class="mb-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'adminapp:admin_home' %}">Admin Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'courseapp:course_list' %}">Courses</a>
+                        </li>
+
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{each_one.name}}
+                        </li>
+                    </ol>
+                </nav>
+            </section>
+            <ul class="list-group list-group-flush">
+                <h3 class="text-info">Course Info</h3>
+
+                <li class="list-group-item text-secondary">
+                    Course Code:
+                   <span class="float-right">{{each_one.code}}</span>
+                 </li>
+                 <li class="list-group-item text-secondary">
+                    Course Name:
+                   <span class="float-right">{{each_one.name}}</span>
+                 </li>
+                 <li class="list-group-item text-secondary">
+                    Duration:
+                   <span class="float-right">{{each_one.duration}}</span>
+                 </li>
+                 <li class="list-group-item text-secondary">
+                    Fees:
+                   <span class="float-right">{{each_one.fees|intcomma}}
+                   </span>
+                 </li>
+                 <li class="list-group-item text-secondary">
+                    Trainer:
+ 
+                   <span class="float-right">{{each_one.trainer}}
+                   </span>
+                 </li>
+                 <li class="list-group-item text-secondary">
+                     Status:
+  
+                    <span class="float-right">{{each_one.status}}
+                    </span>
+                  </li>
+            </ul>
+            <div class="pt-4">
+                <a href="{% url 'courseapp:course_edit' each_one.id %}" class="btn btn-secondary float-left px-4">Update</a>
+                <a href="{% url 'courseapp:course_delete' each_one.id %}" class="btn btn-danger float-right px-4">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

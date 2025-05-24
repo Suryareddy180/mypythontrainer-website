@@ -1,0 +1,141 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+
+<section id="contact_us" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="contact_banner">
+                    <div class="queries">
+                        <h1 class="ant-typography">Additional <br> Queries ?</h1>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="partnership">
+                        <h1 class="ant-typography">Training <br> Partnership ?</h1>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="registrations">
+                        <h1 class="ant-typography">Last Minute Registrations?</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="col-12 col-md-6 p-2">
+                    <div class="contact_card">
+                        <div class="card border">
+                            <div class="card-body d-flex align-items-center">
+                                <!-- SVG Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M19.5 9.75a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 1.5 0v2.69l4.72-4.72a.75.75 0 1 1 1.06 1.06L16.06 9h2.69a.75.75 0 0 1 .75.75Z"
+                                        clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd"
+                                        d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <!-- Call Info -->
+                                <div class="d-flex flex-column justify-content-start align-items-start ms-4">
+                                    <span class="text-muted">Call us on</span>
+                                    <h4 class="text-secondary">+91 9701 37 97 97</h4>
+                                    <span class="text-muted">(9 am to 9 pm IST)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="col-12 col-md-6 p-2">
+                    <div class="contact_card">
+                        <div class="card border">
+                            <div class="card-body d-flex align-items-center">
+                                <img src="{% static 'frontend_assets/images/whatsapp.png' %}" alt="" class="contact_icon">
+                                <div class="d-flex flex-column justify-content-start align-items-start ms-4">
+                                    <span class="text-muted">Chat us on Whatsapp</span>
+                                    <h4 class="text-secondary">+91 9701 37 97 97</h4>
+                                    <span class="text-muted">(24/7)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 p-2">
+                    <div class="contact_card">
+                        <div class="card border">
+                            <div class="card-body d-flex align-items-center">
+                                <!-- SVG Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-6 h-6">
+                                    <path
+                                        d="M19.5 22.5a3 3 0 0 0 3-3v-8.174l-6.879 4.022 3.485 1.876a.75.75 0 1 1-.712 1.321l-5.683-3.06a1.5 1.5 0 0 0-1.422 0l-5.683 3.06a.75.75 0 0 1-.712-1.32l3.485-1.877L1.5 11.326V19.5a3 3 0 0 0 3 3h15Z">
+                                    </path>
+                                    <path
+                                        d="M1.5 9.589v-.745a3 3 0 0 1 1.578-2.642l7.5-4.038a3 3 0 0 1 2.844 0l7.5 4.038A3 3 0 0 1 22.5 8.844v.745l-8.426 4.926-.652-.351a3 3 0 0 0-2.844 0l-.652.351L1.5 9.589Z">
+                                    </path>
+                                </svg>
+                                <!-- Call Info -->
+                                <div class="d-flex flex-column justify-content-start align-items-start ms-4">
+                                    <span class="text-muted">Email us to</span>
+                                    <h4 class="text-secondary">python.trainer.helper @gmail.com</h4>
+                                    <!-- <span class="text-muted">(9 am to 9 pm IST)</span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+
+                <div class="col-12 col-md-6 p-2">
+                    <div class="contact_card">
+                        <div class="card border">
+                            <div class="card-body d-flex align-items-center">
+                                <img src="{% static 'frontend_assets/images/youtube.png' %}" alt="" class="contact_icon">
+                                <div class="d-flex flex-column justify-content-start align-items-start ms-4">
+                                    <span class="text-muted">Follow us on Youtube Channel </span>
+                                    <h4 class="text-secondary">@python.trainer.helper</h4>
+                                    <!-- <span class="text-muted">(24/7)</span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 p-2">
+                    <div class="contact_card">
+                        <div class="card border">
+                            <div class="card-body d-flex align-items-center">
+                                <img src="{% static 'frontend_assets/images/instagram.png' %}" alt="" class="contact_icon">
+                                <div class="d-flex flex-column justify-content-start align-items-start ms-4">
+                                    <span class="text-muted">Follow us on Instagram</span>
+                                    <h4 class="text-secondary">python.trainer.helper</h4>
+                                    <!-- <span class="text-muted">(24/7)</span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 p-2">
+                    <div class="contact_card">
+                        <div class="card border">
+                            <div class="card-body d-flex align-items-center">
+                                <img src="{% static 'frontend_assets/images/linkedin.png' %}" alt="" class="contact_icon">
+                                <div class="d-flex flex-column justify-content-start align-items-start ms-4">
+                                    <span class="text-muted">Follow us on Linkedin </span>
+                                    <h4 class="text-secondary">python.trainer.helper</h4>
+                                    <!-- <span class="text-muted">(24/7)</span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,1091 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}Stories{% endblock %}
+{% block content %}
+
+
+<!-- Ajith -->
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/stories/Ajith.jpeg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+			<div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <p class="text-muted">
+                            I have been attending classes for some time, the way Chaitanya Sir explains is easy to understand even for people
+                            from non-coding backgrounds. He also takes time in clearing doubts and conducting Assignments to make us feel
+                            confident and get more practical.
+                        </p>
+                        <h2 class="h5">Ajith Reddy</h2>
+                        <div class="small text-muted">
+                            <span>Hyderabad</span>,
+                            <span>Batch - 69</span>,
+                            <span>IT Professional</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">4.9</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Hayisha -->
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/stories/Hayisha.jpeg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+			<div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <p class="text-muted">
+                            Good explanation with proper examples. Even the complex concepts can be understood easily and efficiently..
+                        </p>
+                        <h2 class="h5">Hayisha</h2>
+                        <div class="small text-muted">
+                            <span>Hyderabad</span>,
+                            <span>Batch - 68</span>,
+                            <span>Python Fullstack Job Aspirant</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">5.0</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- D. Nivedita -->
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/stories/Niveditha.jpeg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+			<div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <p class="text-muted">
+                            I had an excellent learning experience during my Python training. The instructor's guidance and clear explanations not only deepened my understanding of Python concepts but also played a significant role in helping me secure my job.
+                        </p>
+                        <h2 class="h5">D. Niveditha</h2>
+                        <div class="small text-muted">
+                            <span>Bangalore</span>,
+                            <span>Batch - 67</span>,
+                            <span>IT Professional</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">5.0</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Karthik Ram -->
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/stories/Karthiram.jpeg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+			<div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <p class="text-muted">
+                            This Python training program was exceptional, offering a comprehensive curriculum, expert instruction, and valuable career guidance. The hands-on approach was particularly effective, the challenging assignments pushed me to think critically and problem-solve effectively, solidifying my understanding of core Python concepts.
+                        </p>
+                        <h2 class="h5">Karthik Ram</h2>
+                        <div class="small text-muted">
+                            <span>Hyderbad</span>,
+                            <span>Batch - 65</span>,
+                            <span>IT Professional</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">4.9</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Shreeyans -->
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/instructor.jpg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+            <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <div class="video_content">
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/f6cmc3pTzU8"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <h2 class="h5">B. Shreeyans</h2>
+                        <div class="small text-muted">
+                            <span>USA</span>,
+                            <span>Batch - 63</span>,
+                            <span>School Student</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">5.0</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1 last">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Avinash -->
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/stories/Avinash.jpeg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+			<div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <p class="text-muted">
+                            The training was very well designed and informative. The trainer explained complex concepts in a very simple way. This course improved my skills and given strength for job. I would highly recommend this course to others.
+                        </p>
+                        <h2 class="h5">P. Avinash</h2>
+                        <div class="small text-muted">
+                            <span>Hyderbad</span>,
+                            <span>Batch - 61</span>,
+                            <span>IT Professional</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">5.0</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Kaveri -->
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/stories/Kaveri.jpeg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+			<div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <p class="text-muted">
+                            Python class are so good and easy to understand. Chaitanya sir made even the complex topics very simple with very good examples in the classes.
+                        </p>
+                        <h2 class="h5">Kaveri</h2>
+                        <div class="small text-muted">
+                            <span>Hyderbad</span>,
+                            <span>Batch - 68</span>,
+                            <span>Python Fullstack Job Aspirant</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">4.9</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+<!-- Ritika -->
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/instructor.jpg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+            <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <div class="video_content">
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/WMegDyxOzCc"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <h2 class="h5">Ritika</h2>
+                        <div class="small text-muted">
+                            <span>Hyderabad</span>,
+                            <span>Batch - 59</span>,
+                            <span>Python Fullstack Job Aspirant</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">4.9</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1 last">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+<!-- Image Feedback -->
+<!--
+<section id="story_page" class="mt-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0 position-relative">
+                <div class=" avatar position-relative">
+                    <img src="{% static 'frontend_assets/images/instructor.jpg' %}" class="img-fluid rounded-circle"
+                        alt="Instructor Image">
+                </div>
+            </div>
+            <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+                <div class="card border-0 ">
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <img src="{% static 'frontend_assets/images/quote.png' %}" width="50" alt="Quote Icon"
+                                class="quote-image">
+                        </div>
+                        <img src="{% static 'frontend_assets/images/slide1.jpg' %}" alt="" class="banner_img">
+                        <h2 class="h5">John Doe</h2>
+                        <div class="small text-muted">
+                            <span>USA</span>,
+                            <span>California</span>,
+                            <span>Batch - 6</span>,
+                            <span>Course - Python Fullstack</span>
+                        </div>
+                        <div class="d-flex align-items-center mt-3">
+                            <strong class="me-2">4.3</strong>
+                            <ul class="list-unstyled d-flex mb-0">
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                                <li class="me-1 last">
+                                    <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16"
+                                        fill="currentColor">
+                                        <path
+                                            d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+-->
+<section id="approved_stories" class="mt-5">
+    <div class="container">
+        {% if approved_stories %}
+            {% for feedback in approved_stories %}
+<div class="row mb-5">
+    <div class="col-12 col-sm-5 col-md-4 col-lg-3 text-center mb-3 mb-md-0">
+        <div class="avatar">
+            {% if feedback.user.userprofile.photo %}
+                <img src="{{ feedback.user.userprofile.photo.url }}" class="img-fluid rounded-circle" alt="Student Photo">
+            {% else %}
+                <img src="{% static 'userapp/images/default_user.png' %}" class="img-fluid rounded-circle" alt="Default Photo">
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+        <div class="card border-0">
+            <div class="card-body">
+                <p class="text-muted">{{ feedback.comment }}</p>
+                <h2 class="h5">{{ feedback.user.first_name }} {{ feedback.user.last_name }}</h2>
+                <div class="small text-muted">
+                    <span>{{ feedback.user.userprofile.city }}</span>
+                    <!-- No batch info directly in feedback -->
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                    <strong class="me-2">{{ feedback.rating }}</strong>
+                    <ul class="list-unstyled d-flex mb-0">
+                        {% for star in "12345" %}
+                        <li class="me-1">
+                            <svg viewBox="64 64 896 896" class="text-warning" width="16" height="16" fill="currentColor">
+                                <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
+                            </svg>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+        {% else %}
+            <div class="text-center text-muted">
+                <p>No new approved stories yet.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+
+{% endblock %}

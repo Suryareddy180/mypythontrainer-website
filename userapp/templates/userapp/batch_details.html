@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      {% extends 'userapp/new-base.html' %}
+	{% load custom_filters %}
+	{% load humanize %}
+      {% block content %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Details</title>
+    <style>
+      /* Import Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+      /* Global Styles */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+        background-image: linear-gradient(
+          to right,
+          #5c5b5a,
+          #101a22
+        ) !important;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Main Header/Navigation */
+      .main-header {
+        background-color: #fff;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .main-header .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #6495ed;
+      }
+      .main-header nav ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      }
+      .main-header nav ul li {
+        margin-left: 20px;
+      }
+      .main-header nav ul li a {
+        text-decoration: none;
+        color: #525252;
+      }
+      .main-header nav ul li input[type="search"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .main-header nav ul li button {
+        background-color: #98fb98;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* Hero Section with Gradient Background */
+      .hero {
+        background: linear-gradient(to right, #e0f2f1, #b2dfdb);
+        padding: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .hero-content {
+        max-width: 60%;
+      }
+      .hero .breadcrumbs {
+        color: #525252;
+        margin-bottom: 10px;
+      }
+      .hero h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .hero p {
+        font-size: 1.2em;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+      .hero button {
+        background-color: #98fb98;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
+      }
+      .hero .course-info {
+        margin-top: 20px;
+        color: #525252;
+      }
+      .hero .course-info .stars {
+        color: gold;
+        margin: 0 5px;
+      }
+      .hero-image {
+        max-width: 35%;
+        margin-top: 20px;
+      }
+      .hero-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Course Description – Two-line Clamping with Inline “more…” Link */
+      .course-description {
+        position: relative;
+        overflow: hidden;
+        font-size: 10p;
+      }
+      .description-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 14px !important;
+        line-height: 1.4;
+        margin: 0;
+        padding-right: 60px; /* Space for the read-more link */
+      }
+      .course-description.expanded .description-text {
+        -webkit-line-clamp: unset;
+      }
+      /* Absolutely position the read-more link so it appears inline at the end */
+      .read-more {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(to right, transparent, #f9f9f9);
+        padding-left: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+        color: #007bff;
+        display: inline-flex;
+        align-items: center;
+      }
+      .read-more svg {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+        margin-right: 3px;
+      }
+
+      /* Course Details Section */
+
+      .grid-container {
+        padding: 20px;
+        background-color: #fff;
+        border: 2px solid #ff9629;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1),
+          inset 0 0 10px rgba(0, 0, 0, 0.2), 8px 8px 0px #ff9629;
+      }
+
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-around;
+      }
+      .second-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        justify-content: center;
+        margin-top: 25px;
+      }
+      .detail-item {
+        text-align: center;
+      }
+
+      .detail-item span {
+        display: block;
+        font-size: 16px;
+        color: #555;
+      }
+      .detail-item strong {
+        font-size: 16px;
+        color: #333;
+      }
+
+      /* Days container & small circles */
+      .days-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .day {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      .day:nth-child(1) {
+        background-color: #ff5733;
+      }
+      .day:nth-child(2) {
+        background-color: #28a745;
+      }
+      .day:nth-child(3) {
+        background-color: #ffc300;
+      }
+      .day:nth-child(4) {
+        background-color: #007bff;
+      }
+      .day:nth-child(5) {
+        background-color: #6123d4;
+      }
+      .day:nth-child(6) {
+        background-color: #161616;
+      }
+      @media (max-width: 480px) {
+        .day {
+          width: 30px;
+          height: 30px;
+          font-size: 12px;
+        }
+      }
+
+      /* Course Topics Section */
+      .course-topics {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .course-topics h3 {
+        margin-bottom: 20px;
+      }
+      .topics-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+      @media (max-width: 768px) {
+        .topics-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .topics-container {
+          grid-template-columns: 1fr;
+        }
+      }
+      .topic-card {
+        background-color: #e0f2f1;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: #333;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      /* Replace the previous terminal icon with a new, eye-catching zap icon */
+      .topic-card svg {
+        width: 24px;
+        height: 24px;
+        stroke: #007bff;
+      }
+      /* Zap icon (Feather-style) */
+      .icon-zap {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* Curriculum Download Button */
+      .curriculam {
+        display: inline-block;
+        margin: 20px auto 0;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        text-decoration: none;
+        border-radius: 10px;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+      }
+      .curriculam:hover {
+        background-color: #0056b3;
+      }
+      @media (max-width: 480px) {
+        .curriculam {
+          width: 90%;
+          font-size: 14px;
+          padding: 10px 0;
+        }
+      }
+
+      /* Courses Specialties Section */
+      .course-offerings {
+        margin: 40px 0;
+        text-align: center;
+      }
+      .course-offerings h2 {
+        font-size: 2em;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .course-offerings p {
+        color: #eee;
+        margin-bottom: 30px;
+      }
+      .offerings-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      @media (max-width: 992px) {
+        .offerings-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 576px) {
+        .offerings-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .offering-card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        color: #000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        text-align: center;
+      }
+      .offering-card:hover {
+        transform: translateY(-5px);
+      }
+      .offering-card h3 {
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-size: 18px;
+      }
+      .offering-icon {
+        width: 40px;
+        height: 40px;
+        color: black; /* Change icon color to black */
+      }
+      .offering-card p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: black;
+      }
+
+      /* Trainers Section */
+      .trainers {
+        background: linear-gradient(135deg, #ffffff, #f5f7fa);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .trainers h3 {
+        margin-bottom: 15px;
+      }
+      .trainers-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+      .trainer-card {
+        background: linear-gradient(145deg, #ffffff, #f3f3f3);
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        text-align: left;
+        flex: 1 1 300px;
+      }
+      .trainer-card .header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .trainer-card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #007bff;
+      }
+      .trainer-card h4 {
+        margin: 10px 0 0; /* Removed bottom margin */
+        font-size: 16px;
+        color: #333;
+      }
+      .trainer-card p {
+        margin-top: 0;
+      }
+
+      .trainer-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: #007bff;
+        text-decoration: none;
+      }
+      .trainer-expertise {
+        font-size: 14px;
+        color: #777;
+      }
+      .trainer-extra {
+        font-size: 14px;
+        color: #555;
+        margin-top: 5px;
+      }
+      .trainer-card h4 {
+        margin: 10px 0 5px;
+        font-size: 16px;
+        color: #333;
+      }
+      .trainer-card p {
+        margin-top: 0;
+      }
+
+      /* Video Introduction */
+      .video-intro {
+        text-align: center;
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .video-intro iframe {
+        width: 100%;
+        max-width: 800px;
+        height: 450px;
+      }
+
+      /* Enroll Button with Gradient */
+      .enroll-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        padding: 25px 40px;
+        font-size: 20px;
+        background: #ff9629;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+      .enroll-btn:hover {
+        transform: scale(1.1);
+        background: linear-gradient(45deg, #45a049, #5ea858);
+      }
+      .enroll-btn:active {
+        transform: scale(0.9);
+        background: linear-gradient(45deg, #3d8b41, #529a56);
+      }
+
+      /* Revised Badge */
+      .badge {
+        background-color: #0dcaf0;
+        color: #fff !important;
+        border-radius: 5px;
+        padding: 1px 4px;
+        font-size: 10px !important;
+        margin-left: 5px;
+        display: inline-block !important;
+        margin: auto;
+        font-weight: bold;
+      }
+
+      /* Additional Responsive Styles */
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+        .hero-content {
+          max-width: 100%;
+        }
+        .hero-image {
+          max-width: 100%;
+        }
+        .details-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .week-text {
+        font-size: 14px !important;
+        margin-top: 10px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="breadcrumbs">
+            <a href="{% url 'userapp:new_index_page' %}">Home</a> &gt; <a href="{% url 'userapp:new_courses_calendar_page' %}">Courses</a> &gt; Course Details
+          </div>
+          <h1>{{ batch.course.title }}</h1>
+		  <h2>Zero to Hero</h2>
+          <div class="course-description">
+            <p class="description-text">{{ batch.course.description }} </p>
+            <a
+              href="javascript:void(0)"
+              class="read-more"
+              onclick="toggleDescription()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon-terminal"
+                viewBox="0 0 24 24"
+              >
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+              more..
+            </a>
+          </div>
+          <!--
+		  <div class="course-info">
+            <span class="rating">4.8</span>
+            <span class="stars">⭐⭐⭐⭐⭐</span>
+            <span class="reviews">256 Rating</span>
+            <span class="students">1500 Students</span>
+          </div>
+		  -->
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://images.pexels.com/photos/3183190/pexels-photo-3183190.jpeg"
+            alt="Course Image"
+          />
+        </div>
+      </section>
+
+      <div class="grid-container">
+        <div class="details-grid">
+          <div class="detail-item">
+            <span>Batch No:</span>
+            <strong>{{batch.batch_number}}</strong>
+          </div>
+          <div class="detail-item">
+            <span>Demo Date:</span>
+            <strong>{{batch.start_date}}</strong> 
+			{% if batch.tentative %}
+				<br />
+				<span class="badge">Tentative</span>
+			{% endif %}
+          </div>
+          <div class="detail-item">
+            <span>Duration:</span>
+            <strong>{{batch.duration|course_duration_round}}</strong>
+          </div>
+          <div style="text-align: center">
+            <span>Class Information:</span> <br />
+            <strong>7:00 am - 8:30 am IST</strong>
+			
+			
+			{% with batch.days|cut:", "|split:"," as days %}
+			<div class="days-container">
+				{% for day in days %}
+					{% with day|trim as trimmed_day %}
+						{% if trimmed_day == "Monday" %}
+							<div class="day">M</div>
+						{% elif trimmed_day == "Tuesday" %}
+							<div class="day">T</div>
+						{% elif trimmed_day == "Wednesday" %}
+							<div class="day">W</div>
+						{% elif trimmed_day == "Thursday" %}
+							<div class="day">T</div>
+						{% elif trimmed_day == "Friday" %}
+							<div class="day">F</div>
+						{% elif trimmed_day == "Saturday" %}
+							<div class="day">S</div>
+						{% elif trimmed_day == "Sunday" %}
+							<div class="day">S</div>
+						{% endif %}
+					{% endwith %}
+				{% endfor %}
+			</div>			
+			{% endwith %}
+			<span style="font-size: 10px">(Daily 1.5 hrs, Weekly 6 days)</span>
+          </div>
+        </div>
+        <div class="second-grid">
+          <div class="detail-item">
+            <span>Price:</span>
+            <strong>&#8377; {{ batch.fees|intcomma }}/-</strong>
+			<span style="font-size: 8px">No hidden cost!</span>
+          </div>
+          <div class="detail-item">
+            <span>Language:</span>
+            <strong>{{batch.language}}</strong>
+          </div>
+          <div class="detail-item">
+            <span>Mode:</span>
+            <strong>Online</strong>
+          </div>
+          <div class="detail-item">
+            <span>Enrollments:</span>
+            <strong>{{enrollments}}</strong>
+            <span style="font-size: 8px">Students enrolled already!</span>
+          </div>
+          <div class="detail-item">
+            <span>Any queries:</span>
+			<strong>
+            {{batch.poc_name}}<br/>            
+			<i class="fas fa-phone"></i>              
+			<i class="fab fa-whatsapp text-green"></i>              
+			+91-{{batch.poc_mobile_no}}
+            </strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Topics Section -->
+      <div class="course-topics">
+        <h3>What You'll Learn</h3>
+        <div class="topics-container">
+          <!-- Each topic card now uses the new zap icon -->
+		  {% for topic in topics %}
+			<div class="topic-card">
+				<svg
+				  xmlns="http://www.w3.org/2000/svg"
+				  class="icon-zap"
+				  viewBox="0 0 24 24"
+				  fill="none"
+				  stroke="currentColor"
+				  stroke-width="2"
+				  stroke-linecap="round"
+				  stroke-linejoin="round"
+				>
+				  <polygon
+					points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+				  ></polygon>
+				</svg>
+				{{topic.topic_name}}
+			  </div>
+		  {% endfor %}
+        </div>		
+        <a class="curriculam" href="{{ batch.course.uploaded_file.url }}"  target="_blank" rel="noopener noreferrer">Download Detailed Curriculum</a>
+      </div>
+
+      <!-- Courses Specialities Section -->
+      <section class="course-offerings">
+        <h3 style="color: #fff;" >Courses Specialities</h3>
+        <div class="offerings-grid">
+          <div class="offering-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="offering-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polygon points="23 7 16 12 23 17 23 7"></polygon>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+            <h3>Session Recording</h3>
+            <p>Every live class will be recorded and shared to Students.</p>
+          </div>
+          <div class="offering-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="offering-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M4 4.5A2.5 2.5 0 0 1 6.5 7H20"></path>
+              <path d="M6.5 7v10"></path>
+            </svg>
+            <h3>Course Material</h3>
+            <p>Comprehensive course materials provided to Students.</p>
+          </div>
+          <div class="offering-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="offering-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M9 2H15V6H9z"></path>
+              <path
+                d="M9 2C7.89543 2 7 2.89543 7 4V5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H17V4C17 2.89543 16.1046 2 15 2H9Z"
+              ></path>
+            </svg>
+            <h3>Assignments</h3>
+            <p>Topic wise assignments available to reinforce learning.</p>
+          </div>
+          <div class="offering-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="offering-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M16 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M3 21v-2a4 4 0 0 1 3-3.87"></path>
+              <polyline points="16 11 18 13 22 9"></polyline>
+            </svg>
+            <h3>Accessible Trainer</h3>
+            <p>Trainers are accessible after classes too for doubts clearing.</p>
+          </div>
+          <div class="offering-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="offering-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <path
+                d="M9.09 9a3 3 0 1 1 5.83 1c-.55.67-1.38 1-2.22 1h-.5"
+              ></path>
+              <line x1="12" y1="17" x2="12" y2="17"></line>
+            </svg>
+            <h3>Question Hour</h3>
+            <p>Encourage every Student to ask and clear the Doubts.</p>
+          </div>
+          <div class="offering-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="offering-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+              <path d="M9 16l2 2 4-4"></path>
+            </svg>
+            <h3>Weekly Tests</h3>
+            <p>Conducted on every week to ensure best coding practice.</p>
+          </div>
+          <div class="offering-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="offering-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21 12 17.77 5.82 21 7 14.14 2 9.27 8.91 8.26 12 2"
+              ></polygon>
+            </svg>
+            <h3>Highlight IMP</h3>
+            <p>Interview Questions will be highlighted on every topic.</p>
+          </div>
+          <div class="offering-card">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="offering-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 3h-8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"></path>
+            </svg>
+            <h3>100% Job Assistance</h3>
+            <p>Job assistance provided after course completion.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trainers Section -->
+      <div class="trainers">
+        <h3>Meet Our Trainer(s)</h3>
+        <div class="trainers-container">
+			{% for trainer in trainers %}
+				<div class="trainer-card">
+					<div class="header">
+						<!-- <img src="https://media.istockphoto.com/id/1427953349/photo/portrait-of-boy.jpg?s=2048x2048&w=is&k=20&c=gRwEP47HFvMHaGo8lvzo04uhOg5mNAaPHaVA1867mc0=" alt="{{trainer.name}}" /> -->
+						<div>
+							<a class="trainer-name" href="{% url 'userapp:new_about_page' %}" >Mr. {{trainer.name}}</a>
+							<!-- <div class="trainer-expertise">
+							  Python &amp; Data Science Trainer
+							</div> -->
+							<div class="trainer-extra">
+							  Qualification: <strong>{{trainer.qualification}}</strong> (<b>{{trainer.college}}</b>)</br> 	
+							  IT Experience: {{trainer.experience}}+ years </br> 							  
+							  Training Experience: {{trainer.training_exp}}+ years 						  
+							</div>
+						</div>
+					</div>
+					<!--
+					<p>
+					  <span style="font-weight: bold">Training Experience:</span> <br />
+					  70+ Batches | 2500+ Aspirants | 45000+ Tests
+					</p>
+					-->
+				 </div>
+			{% endfor %}
+        </div>
+      </div>
+	  
+	  {% if youtube_embed_url %}
+      <!-- Video Introduction -->
+      <div class="video-intro">
+        <h3>Course Introduction</h3>
+        <iframe src="{{youtube_embed_url}}" frameborder="0" allowfullscreen ></iframe>
+      </div>
+	  {% endif %}
+    </div>
+
+    <!-- Enroll Button -->
+    <a class="enroll-btn" href="{% url 'userapp:new_registration_page' %}" >Enroll Now</a>
+
+    <!-- Description Toggle Script -->
+    <script>
+      function toggleDescription() {
+        var container = document.querySelector(".course-description");
+        container.classList.toggle("expanded");
+        var readMoreLink = container.querySelector(".read-more");
+        if (container.classList.contains("expanded")) {
+          readMoreLink.innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" class="icon-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg> less..';
+        } else {
+          readMoreLink.innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" class="icon-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg> more..';
+        }
+      }
+    </script>
+  </body>
+</html>
+{% endblock %}

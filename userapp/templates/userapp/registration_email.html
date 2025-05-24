@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            text-align: center;
+            border-bottom: 2px solid #f08d27;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .email-header h2 {
+            font-size: 18px;
+            color: #f08d27;
+            margin: 0;
+        }
+
+        .email-content {
+            line-height: 1.6;
+        }
+
+        .email-content h2 { font-size: 18px; }
+
+        .email-content p {
+            margin: 10px 0;
+            font-size: 12px;
+        }
+
+        .email-footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h2>Welcome to My Python Trainer!</h2>
+        </div>
+        <div class="email-content">
+            <h2>Dear {{first_name|capfirst}} {{last_name|capfirst}},</h2>
+            <p>
+				Thank you for signing up for My Python Training! We're excited to have you with us. Please note down your account details for future reference:<br>
+				Username: {{email}}<br>
+				Regitered Mobile Number: {{mobile_number}}
+			</p>
+			<p>
+				Now, you can start exploring the available python related courses and enroll to them based on course calendar matching to your schedule:<br>
+				www.mypythontrainer.com/course-calendar/
+			</p>
+			
+			<p>
+				We look forward to having you on No. 1 Python Online Job Oriented Training Program! by an IIT Roorkee Alumni, Top Industrial Expert.
+			</p>
+			
+			<p>
+				If you didnot sign up for this account, please disregard this email. If you need assistance, feel free to contact our support team at +91 9701 379797 over WhatsApp chat.
+			</p>
+        </div>
+        <div class="email-footer">
+            <p>
+				Best Regards,<br>
+				<strong>
+					My Python Training Team<br>
+					WhatsApp: +91 9701 379797<br>
+					https://www.youtube.com/@python.trainer.helper?sub_confirmation=1
+				</strong>
+			</p>
+        </div>
+    </div>
+</body>
+
+</html>

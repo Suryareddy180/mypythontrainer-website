@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	{% load custom_filters %}
+    <title>Welcome to My Python Trainer!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            text-align: center;
+            border-bottom: 2px solid #f08d27;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .email-header h2 {
+            font-size: 18px;
+            color: #f08d27;
+            margin: 0;
+        }
+
+        .email-content {
+            line-height: 1.6;
+        }
+
+        .email-content h2 {
+            font-size: 18px;
+        }
+
+        .email-content p {
+            margin: 10px 0;
+            font-size: 12px;
+        }
+
+        .email-footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h2>Batch Enrollment Confirmation</h2>
+        </div>
+        <div class="email-content">
+            <h2>Dear {{first_name|capfirst}} {{last_name|capfirst}},</h2>
+			<p>Congratulations! You have successfully enrolled to the <strong>{{course_title}}</strong> course at My Python Trainer platform. We’re excited to have you join us and look forward to helping you achieve your learning goals.</p>
+            <p>Here are your enrollment details:</p>
+            <ul>
+                <li><strong>Course:</strong> {{ course_title }} (Batch #: {{batch_number}})</li>                
+                <li><strong>Start Date:</strong> {{ start_date }} {{tentative}}</li>
+				<li><strong>Course Duration:</strong> {{ course_duration|course_duration_round }} months</li>
+				<li><strong>Class Details:</strong> {{class_start_time}} to {{class_end_time}} on every {{class_days}} </li>
+				<li><strong>Trainer:</strong> {{trainers}} </li>
+				<li><strong>About {{ course_title }} course:</strong> {{youtube_link}} </li>
+            </ul>
+            <p><u>However, your seat in class is NOT reserved yet. Please logon to your account on {{login_link}} and click on <b>Book Seat</b> to reserve your seat to the class on or before {{reservation_last_date}}. Else, your enrollment will be deactivated automatically. Please note that, ONLY the reserved seat people can able to join the daily classes.</u></p>
+			<p>You can also click on <b>Confirm Seat</b> to confirm your seat directly to the class on or before {{reservation_last_date}}.</p>
+			<p>Once your seat is booked/confirmed, You can access the course materials and resources by logon to your account at {{login_link}}.</p>			
+            <p>If you have any questions or need assistance, don't hesitate to reach out to us at +91 9701 379797 over WhatsApp chat.</p>
+			<p>We’re excited to have you on this learning journey and look forward to your success!</p>
+        </div>
+		
+        <div class="email-footer">
+            <p>
+				Best Regards,<br>
+				<strong>
+					My Python Training Team<br>
+					WhatsApp: +91 9701 379797<br>
+					https://www.youtube.com/@python.trainer.helper?sub_confirmation=1
+				</strong>
+			</p>
+        </div>
+    </div>
+</body>
+</html>

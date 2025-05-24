@@ -1,0 +1,70 @@
+<!--NOT USED-->
+{% extends 'userapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-4">{{course.name}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'userapp:index_page' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'userapp:course_view' %}">Courses</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{course.title}}</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!--button-->
+<section id="courses" class="py-4">
+
+    <div class="container">
+        <a href="{% url 'userapp:course_view' %}" class="btn btn-secondary mb-4">
+            Back to Courses
+        </a>
+
+        <!--        course syllabus-->
+
+        <div class="row mb-5">
+            <div class="col-md-8">
+                <h1 class="display-6">Duration</h1>
+                <p class="text-justify">
+                    {{course.duration}}
+                </p>
+                <div class="mb-3">
+                    <a href="{% url 'userapp:course_regs' course.title %}" class="btn btn-outline-info">Apply Here</a>
+                    
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <!--trainer is a foregin key field and photo is field in trainers models and later url-->
+                    <div class="card-body">
+                        <h5 class="card-title">Program Trainer</h5>
+                        <h6 class="text-secondary">{{course.trainer}}</h6>
+                        <hr>
+                        <h6 class="text-secondary">{{course.trainer.experience}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
+
+{% endblock %}

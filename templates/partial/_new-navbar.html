@@ -1,0 +1,90 @@
+{% load static %}
+<div class="navbar-wrapper">
+<header class="navbar navbar-expand-lg ">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <!-- Logo -->
+        <a href="/" class="navbar-brand">
+            <img src="{% static 'frontend_assets/images/logo-1.png' %}" alt="Logo" width="160">
+        </a>
+
+        <!-- Navbar Toggle for Mobile View -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+            aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Menu -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
+            <button class="btn-close text-reset d-lg-none ms-auto me-2" id="closeNavbarMenu" type="button"
+                aria-label="Close"></button>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {% if not user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/home/' %}active{% endif %}"
+                        href="{% url 'userapp:new_index_page' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/trainers/' %}active{% endif %}"
+                        href="{% url 'userapp:new_about_page' %}">Trainers</a>
+                </li>
+                {% endif %}
+                <!--<li class="nav-item">
+                    <a class="nav-link {% if request.path == '/courses/' %}active{% endif %}"
+                        href="#">Courses Offering</a>
+                </li>-->
+                 <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/my-enrolled-courses/' %}active{% endif %}"
+                        href="{% url 'userapp:feedback-List' %}">Stories</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/course-calendar/' %}active{% endif %}"
+                        href="{% url 'userapp:new_courses_calendar_page' %}">Courses</a>
+                </li>
+                {% if not user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/stories/' %}active{% endif %}"
+                        href="{% url 'userapp:new_stories_page' %}">Stories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}"
+                        href="{% url 'userapp:new_contact_page' %}">Contact</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/my-enrolled-courses/' %}active{% endif %}"
+                        href="{% url 'userapp:applied_courses' %}">My Enrolled Courses</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link {% if request.path == '/my-profile/' %}active{% endif %}"
+                        href="{% url 'userapp:user_profile_view' %}">My Profile</a>
+                </li>
+
+                <li class="nav-item ">
+                    <form method="POST" action="{% url 'userapp:logout' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+
+                {% else %}
+                <li class="nav-item">
+                    <a class="btn login-btn"
+                        href="{% url 'userapp:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'userapp:new_registration_page' %}"
+                        class="btn btn-primary">Register</a>
+                </li>
+
+
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>
+</div>

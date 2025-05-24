@@ -1,0 +1,28 @@
+{% extends "userapp/new-base.html" %}
+{% load static %}
+{% block title %}Payment Failed{% endblock %}
+{% block content %}
+<section id="payment-status" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card mt-4 shadow-lg">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="border-bottom mb-4" style="color: #f08d27;">
+                            Payment Failed
+                        </h4>
+                        <div class="mb-4">
+                            <img src="{% static 'frontend_assets/images/payment-failed.jpg' %}" alt="Payment Failed" width="200">
+                        </div>
+                        <p>{{ error_message }}</p>
+                        <div class="pt-3">
+                            <a href="{% url 'userapp:applied_courses' %}" 
+                            class="btn btn-secondary">Go Back to My Enrolled Courses</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

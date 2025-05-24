@@ -1,0 +1,741 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}Trainers{% endblock %}
+{% block content %}
+
+<section id="about_page" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div id="D. Chaitanya"></div>
+            <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+                <div class="profile-basic-info">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="ant-image mt-3 mb-4">
+                            <img class="ant-image-img avatar rounded-circle" src="{% static 'frontend_assets/images/trainers/Chaitanya.jpg' %}"
+                                style="max-width: 350px;">
+                        </div>
+                        <h4 class="ant-typography" style="margin-bottom: 0px;">Mr. D. Chaitanya</h4><span
+                            class="ant-typography"><strong>#1 Online Python Trainer</strong></span>
+                    </div>
+
+                    <section id="divider">
+                        <div class="container">
+                            <div class="ant-divider css-lujapw   text-center">
+                                <span class="ant-divider-inner-text">
+                                    <span role="img" aria-label="holder" class="anticon anticon-holder">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em"
+                                            height="1em" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span role="img" aria-label="holder" class="anticon anticon-holder">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em"
+                                            height="1em" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span role="img" aria-label="holder" class="anticon anticon-holder">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em"
+                                            height="1em" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span role="img" aria-label="holder" class="anticon anticon-holder">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em"
+                                            height="1em" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="card border">
+                        <div class="card-body">
+                            <div class="d-flex flex-column">
+                                <ul class="list-group list-group-flush border-0">
+                                    <li class="list-group-item">
+                                        <h4>Age: 43</h4>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Qualification: M.Tech</h4>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>IT Exp.: 20+ yrs</h4>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Training Exp.: 10+ yrs</h4>
+                                    <li class="list-group-item d-flex align-items-center gap-1">
+                                        <h4 class="m-0"><strong>Rating:</strong></h4>
+                                        <style>
+                                            .py-no-margin { margin-right: 0 !important;}
+                                            .py-cursor-default {cursor: default; }
+                                        </style>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <div class="mt-4">
+                                    <span class="btn btn-primary py-cursor-default mt-3">Core Python</span>
+                                    <span class="btn btn-primary py-cursor-default mt-3">Python Fullstack</span>
+                                    <span class="btn btn-primary py-cursor-default mt-3">Data Science</span>
+                                </div>
+
+                                <!--
+                                <ul class="list-group list-group-flush mt-4">
+                                    <li class="list-group-item">
+                                        <span class="btn btn-primary py-cursor-default">Core Python</span>
+                                    </li>
+                                </ul>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-8 col-sm-12 mb-4">
+                <div class="row row-gap-4">
+                    <div class="col-12">
+                        <div class="gutter-row">
+                            <h4 class="ant-typography ">Bio</h4>
+                            <div class="text-content">
+                                <span class="ant-typography d-block">Mr. D. Chaitanya is a seasoned professional with a robust educational background, holding an M.Tech degree from IIT Roorkee. With over 20 years of experience in the IT industry, Mr. Chaitanya has amassed extensive knowledge and skills in Python, Data Science technologies.</span>
+                                <br />
+                                <span class="ant-typography d-block">Notably, he trained 70+ batches so far successfully and possess over a decade of experience in training, indicating a strong capability for imparting knowledge and training graduates, job aspirants. Having worked with multiple MNC companies across different continents, Mr. Chaitanya likely has a diverse range of experiences and perspectives in the IT sector.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="gutter-row  p-4">
+                            <h4 class="ant-typography ">Qualifications</h4>
+
+                            <ul class="ant-list-items p-0 certificate-gallery">
+                                <li class="ant-list-item list-unstyled">
+                                    <div class="d-flex align-items-center">
+                                        <span class="ant-typography ">
+                                            <strong>B.E</strong> from <strong>Andhra University</strong>
+                                        </span>
+                                        <div class="ant-image" style="width: 50px;">
+                                            <a href="{% static 'frontend_assets/images/trainers/Chaitanya-BE-Degree.jpg' %}">
+                                                <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" 
+                                                width="50" alt="Chaitanya-BE-Degree" title="Chaitanya-BE-Degree" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="ant-list-item list-unstyled">
+                                    <div class="d-flex align-items-center">
+                                        <span class="ant-typography ">
+                                            <strong>M.Tech</strong> from <strong>IIT Roorkee</strong>
+                                        </span>
+                                        <div class="ant-image" style="width: 50px;">
+                                            <a href="{% static 'frontend_assets/images/trainers/Chaitanya_M-Tech_Degree.jpg' %}">
+                                                <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" 
+                                                width="50" alt="Chaitanya M.Tech Degree Certificate" title="Chaitanya M.Tech Degree Certificate" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="ant-card">
+                            <div class="ant-card-head">
+                                <div class="ant-card-head-wrapper">
+                                    <div class="ant-card-head-title">Training Experience</div>
+                                </div>
+                            </div>
+                            <div class="ant-card-body d-flex align-items-center justify-content-between">
+                                <div class="ant-card-grid ">
+                                    <div class="d-flex align-items-center flex-column">
+                                        <div class="ant-image " style="width: 50px;"><img class="ant-image-img "
+                                                src="{% static 'frontend_assets/images/student.png' %}" width="50">
+                                        </div>
+                                        <div class="d-flex align-items-center flex-column" style="margin-top: 10px;">
+                                            <h3 class="ant-typography " style="margin: 0px;">70+</h3><span
+                                                class="ant-typography "><strong>Batches</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ant-card-grid ant-card-grid-hoverable">
+                                    <div class="d-flex align-items-center flex-column">
+                                        <div class="ant-image " style="width: 50px;"><img class="ant-image-img "
+                                                src="{% static 'frontend_assets/images/study.png' %}" width="50">
+                                        </div>
+                                        <div class="d-flex align-items-center flex-column" style="margin-top: 10px;">
+                                            <h3 class="ant-typography " style="margin: 0px;">2500+</h3>
+                                            <span class="ant-typography "><strong>Aspirants</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ant-card-grid ant-card-grid-hoverable">
+                                    <div class="d-flex align-items-center flex-column">
+                                        <div class="ant-image " style="width: 50px;">
+                                            <img class="ant-image-img "
+                                                src="{% static 'frontend_assets/images/test.png' %}" width="50">
+                                        </div>
+                                        <div class="d-flex align-items-center flex-column" style="margin-top: 10px;">
+                                            <h3 class="ant-typography " style="margin: 0px;">45000+</h3>
+                                            <span class="ant-typography ">
+                                                <strong>Tests</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="row flex-column row-gap-4">
+                    <div class="col-12">
+                        <div class="gutter-row  timeline ">
+                            <h4 class="ant-typography " style="margin-top: 10px;">IT Experience</h4>
+                            <ul class="ant-timeline list-unstyled">
+                                <li class="ant-timeline-item position-relative">
+                                    <div class="ant-timeline-item-label">2005 - 2006</div>
+                                    <div class="ant-timeline-item-tail"></div>
+                                    <div class="ant-timeline-item-head ant-timeline-item-head-custom">
+                                        <img class="img-fluid rounded-circle" src="{% static 'frontend_assets/images/companies/tata.webp' %}" width="46" />
+                                    </div>
+                                    <div class="ant-timeline-item-content">TCE</div>
+                                </li>
+                                <li class="ant-timeline-item position-relative">
+                                    <div class="ant-timeline-item-label">2006 - 2010</div>
+                                    <div class="ant-timeline-item-tail"></div>
+                                    <div class="ant-timeline-item-head ant-timeline-item-head-custom">
+                                        <img class="img-fluid rounded-circle" src="{% static 'frontend_assets/images/companies/geometric.png' %}" width="46" />
+                                    </div>
+                                    <div class="ant-timeline-item-content">Geometric</div>
+                                </li>
+								<li class="ant-timeline-item position-relative">
+                                    <div class="ant-timeline-item-label">2010 - 2017</div>
+                                    <div class="ant-timeline-item-tail"></div>
+                                    <div class="ant-timeline-item-head ant-timeline-item-head-custom">
+                                        <img class="img-fluid rounded-circle" src="{% static 'frontend_assets/images/companies/techm.png' %}" width="46" />
+                                    </div>
+                                    <div class="ant-timeline-item-content">TechM</div>
+                                </li>
+								<li class="ant-timeline-item position-relative">
+                                    <div class="ant-timeline-item-label">2017 - 2019</div>
+                                    <div class="ant-timeline-item-tail"></div>
+                                    <div class="ant-timeline-item-head ant-timeline-item-head-custom">
+                                        <img class="img-fluid rounded-circle" src="{% static 'frontend_assets/images/companies/capgemini.png' %}" width="46" />
+                                    </div>
+                                    <div class="ant-timeline-item-content">Capgemini</div>
+                                </li>
+								<li class="ant-timeline-item position-relative">
+                                    <div class="ant-timeline-item-label">2019 - Till date</div>
+                                    <div class="ant-timeline-item-head ant-timeline-item-head-custom">
+                                        <img class="img-fluid rounded-circle" src="{% static 'frontend_assets/images/companies/infosys.png' %}" width="46" />
+                                    </div>
+                                    <div class="ant-timeline-item-content">Infosys</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="gutter-row achievements ">
+                            <h4 class="ant-typography" style="margin-top: 10px;">Awards &amp; Rewards
+                            </h4>
+                            <div class="d-flex flex-wrap gap-3 gallery">
+                                <div class="ant-image" style="width: 50px;">
+                                    <a href="{% static 'frontend_assets/images/trainers/TechM_Long-Serv-Appr.JPG' %}">
+                                        <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" width="50"
+                                         alt="TechM Long Service Appreciation" title="TechM Long Service Appreciation" />
+                                    </a>
+                                </div>
+                                <div class="ant-image" style="width: 50px;">
+                                    <a href="{% static 'frontend_assets/images/trainers/TechM-EOM.JPG' %}">
+                                        <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" width="50"
+                                         alt="TechM Employee of Month" title="TechM Employee of Month" />
+                                    </a>
+                                </div>
+
+                                <div class="ant-image" style="width: 50px;">
+                                    <a href="{% static 'frontend_assets/images/trainers/TechM-StarPerf.JPG' %}">
+                                        <img class="ant-image-img" src="{% static 'frontend_assets/images/trophy.png' %}" width="50"
+                                         alt="TechM Star Performer" title="TechM Star Performer" />
+                                    </a>
+                                </div>
+
+                                <div class="ant-image" style="width: 50px;">
+                                    <a href="{% static 'frontend_assets/images/trainers/TechM_POB-1.JPG' %}">
+                                        <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" width="50"
+                                         alt="TechM_POB-1" title="TechM_POB-1" />
+                                    </a>
+                                </div>
+                                <div class="ant-image" style="width: 50px;">
+                                    <a href="{% static 'frontend_assets/images/trainers/TechM_POB-2.JPG' %}">
+                                        <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" width="50"
+                                         alt="TechM_POB-2" title="TechM_POB-2" />
+                                    </a>
+                                </div>
+
+                                <div class="ant-image" style="width: 50px;">
+                                    <a href="{% static 'frontend_assets/images/trainers/Geometric-Kudos.JPG' %}">
+                                        <img class="ant-image-img" src="{% static 'frontend_assets/images/trophy.png' %}" width="50"
+                                         alt="Geometric Kudos" title="Geometric Kudos" />
+                                    </a>
+                                </div>
+
+                                <div class="ant-image" style="width: 50px;">
+                                    <a href="{% static 'frontend_assets/images/trainers/TechM-Top-Perform.JPG' %}">
+                                        <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" width="50"
+                                         alt="TechM Project Top Performer" title="TechM Project Top Performer" />
+                                    </a>
+                                </div>
+                                <div class="ant-image" style="width: 50px;">
+                                    <a href="{% static 'frontend_assets/images/trainers/TechM-Guru.JPG' %}">
+                                        <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" width="50"
+                                         alt="TechM Guru" title="TechM Guru" />
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="divider">
+    <div class="container">
+        <div class="ant-divider css-lujapw   text-center">
+            <span class="ant-divider-inner-text">
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+                <span role="img" aria-label="holder" class="anticon anticon-holder">
+                    <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em" height="1em"
+                        fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                        </path>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section id="about_page" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div id="G. Saikumar"></div>
+            <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+                <div class="profile-basic-info">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="ant-image mt-3 mb-4">
+                            <img class="ant-image-img avatar rounded-circle"
+                                src="{% static 'frontend_assets/images/trainers/SaiKumar.jpeg' %}" style="max-width: 350px;">
+                        </div>
+                        <h4 class="ant-typography" style="margin-bottom: 0px;">Mr. G. Sai kumar</h4><span
+                            class="ant-typography"><strong>React Trainer</strong></span>
+                    </div>
+
+                    <section id="divider">
+                        <div class="container">
+                            <div class="ant-divider css-lujapw   text-center">
+                                <span class="ant-divider-inner-text">
+                                    <span role="img" aria-label="holder" class="anticon anticon-holder">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em"
+                                            height="1em" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span role="img" aria-label="holder" class="anticon anticon-holder">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em"
+                                            height="1em" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span role="img" aria-label="holder" class="anticon anticon-holder">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em"
+                                            height="1em" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span role="img" aria-label="holder" class="anticon anticon-holder">
+                                        <svg viewBox="64 64 896 896" focusable="false" data-icon="holder" width="1em"
+                                            height="1em" fill="currentColor" aria-hidden="true">
+                                            <path
+                                                d="M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="card border">
+                        <div class="card-body">
+                            <div class="d-flex flex-column">
+                                <ul class="list-group list-group-flush border-0">
+                                    <li class="list-group-item">
+                                        <h4>Age: 28</h4>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Qualification: B.Tech</h4>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>IT Exp.: 6+ yrs</h4>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Training Exp.: 4+ yrs</h4>
+                                    <li class="list-group-item d-flex align-items-center gap-1">
+                                        <h4 class="m-0"><strong>Rating:</strong></h4>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                            <li class="list-inline-item py-no-margin">
+                                                <i class="fas fa-star" aria-hidden="true"></i>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                                <div class="mt-4">
+                                    <span class="btn btn-primary py-cursor-default mt-2">HTML</span>&nbsp;
+                                    <span class="btn btn-primary py-cursor-default mt-2">CSS</span>&nbsp;
+                                    <span class="btn btn-primary py-cursor-default mt-2">Bootstrap</span>&nbsp;
+                                    <span class="btn btn-primary py-cursor-default mt-2">Javascript</span>&nbsp;
+                                    <span class="btn btn-primary py-cursor-default mt-2">React JS</span>&nbsp;
+                                    <span class="btn btn-primary py-cursor-default mt-2">Node JS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-8 col-sm-12 mb-4">
+                <div class="row row-gap-4">
+                    <div class="col-12">
+                        <div class="gutter-row">
+                            <h4 class="ant-typography ">Bio</h4>
+                            <div class="text-content ">
+                                <span class="ant-typography d-block">Mr. Sai Kumar is a highly skilled Node Fullstack Developer with 6+ yrs of programming experience across various IT companies. In addition to his technical proficiency, Mr. Sai Kumar has been dedicated to training aspiring professionals, offering his vast knowledge to help them excel in the software industry. His experience as a trainer allows him to effectively guide job aspirants, providing them with valuable insights and hands-on learning that equips them with the practical skills needed for success in their careers.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="gutter-row  p-4">
+                            <h4 class="ant-typography ">Educational Certificates</h4>
+
+                            <ul class="ant-list-items p-0 certificate-gallery">
+                                <li class="ant-list-item list-unstyled">
+                                    <div class="d-flex align-items-center">
+                                        <span class="ant-typography ">
+                                            <strong>B.Tech</strong> from <strong>BITS</strong>
+                                        </span>                                        
+                                    </div>
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="ant-card">
+                            <div class="ant-card-head">
+                                <div class="ant-card-head-wrapper">
+                                    <div class="ant-card-head-title">Training Experience</div>
+                                </div>
+                            </div>
+                            <div class="ant-card-body d-flex align-items-center justify-content-between">
+                                <div class="ant-card-grid ">
+                                    <div class="d-flex align-items-center flex-column">
+                                        <div class="ant-image " style="width: 50px;"><img class="ant-image-img "
+                                                src="{% static 'frontend_assets/images/student.png' %}" width="50">
+                                        </div>
+                                        <div class="d-flex align-items-center flex-column" style="margin-top: 10px;">
+                                            <h3 class="ant-typography " style="margin: 0px;">22</h3><span
+                                                class="ant-typography "><strong>Batches</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ant-card-grid ant-card-grid-hoverable">
+                                    <div class="d-flex align-items-center flex-column">
+                                        <div class="ant-image " style="width: 50px;"><img class="ant-image-img "
+                                                src="{% static 'frontend_assets/images/study.png' %}" width="50">
+                                        </div>
+                                        <div class="d-flex align-items-center flex-column" style="margin-top: 10px;">
+                                            <h3 class="ant-typography " style="margin: 0px;">850+</h3>
+                                            <span class="ant-typography "><strong>Students</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ant-card-grid ant-card-grid-hoverable">
+                                    <div class="d-flex align-items-center flex-column">
+                                        <div class="ant-image " style="width: 50px;">
+                                            <img class="ant-image-img "
+                                                src="{% static 'frontend_assets/images/test.png' %}" width="50">
+                                        </div>
+                                        <div class="d-flex align-items-center flex-column" style="margin-top: 10px;">
+                                            <h3 class="ant-typography " style="margin: 0px;">7000+</h3>
+                                            <span class="ant-typography ">
+                                                <strong>Tests</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="row flex-column row-gap-4">
+                    <div class="col-12">
+                        <div class="gutter-row  timeline ">
+                            <h4 class="ant-typography " style="margin-top: 10px;">IT Experience</h4>
+                            <ul class="ant-timeline list-unstyled">
+                                <li class="ant-timeline-item position-relative">
+                                    <div class="ant-timeline-item-label">2019 - 2024</div>
+                                    <div class="ant-timeline-item-tail"></div>
+                                    <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                                    <div class="ant-timeline-item-content">Wise step</div>
+                                </li>
+                                <li class="ant-timeline-item position-relative">
+                                    <div class="ant-timeline-item-label">2024 - Tilldate</div>
+                                    <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+                                    <div class="ant-timeline-item-content">Fission Labs</div>
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>                    
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about_page" class="mt-5">
+
+  <div class="container">
+    <div class="row">
+      {% for trainer in tnr %}
+      <div class="col-lg-3 col-md-4 col-sm-12 mb-4">
+        <div class="profile-basic-info">
+          <div class="d-flex flex-column align-items-center">
+            <div class="ant-image mt-3 mb-4">
+              {% if trainer.picture %}
+              <img class="ant-image-img avatar rounded-circle" src="{{ trainer.picture.url }}" style="max-width: 350px;">
+              {% else %}
+              <img class="ant-image-img avatar rounded-circle" src="{% static 'frontend_assets/images/default-trainer.jpg' %}" style="max-width: 350px;">
+              {% endif %}
+            </div>
+            <h4 class="ant-typography" style="margin-bottom: 0px;">Mr. {{ trainer.name }}</h4>
+            <span class="ant-typography"><strong>{{ trainer.title }}</strong></span>
+          </div>
+
+          <div class="card border">
+            <div class="card-body">
+              <ul class="list-group list-group-flush border-0">
+                {% if trainer.age %}
+                <li class="list-group-item">
+                  <h4>Age: {{ trainer.age }}</h4>
+                </li>
+                {% endif %}
+                <li class="list-group-item">
+                  <h4>Qualification:<br>
+
+                      {% for qualification in  trainer.qualifications.all %}
+<!--									{{ trainer.qualifications.first.degree.title|default:"N/A" }}-->
+										{{qualification}}<br>
+								{% endfor %}
+                  </h4>
+                </li>
+                <li class="list-group-item">
+                  <h4>IT Exp.: {{ trainer.total_it_experience }} +yrs</h4>
+                </li>
+                <li class="list-group-item">
+                  <h4>Training Exp.: {{ trainer.training_exp }} +yrs</h4>
+                </li>
+               <li class="list-group-item d-flex align-items-center gap-1">
+    <h4 class="m-0"><strong>Rating:</strong> {{ trainer.rating }}</h4>
+
+    <style>
+        .py-no-margin { margin-right: 0 !important; }
+        .py-cursor-default { cursor: default; }
+    </style>
+
+    <ul class="list-inline">
+        {% for i in "12345" %}
+            {% if forloop.counter <= trainer.rating %}
+                <li class="list-inline-item py-no-margin">
+                    <i class="fas fa-star text-warning" aria-hidden="true"></i>
+                </li>
+
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+              </ul>
+
+              <div class="mt-4">
+                {% for q in trainer.qualifications.all %}
+                <span class="btn btn-primary py-cursor-default mt-2">{{ q }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-8 col-sm-12 mb-4">
+        <div class="row row-gap-4">
+          <div class="col-12">
+            <div class="gutter-row">
+              <h4 class="ant-typography">Bio</h4>
+              <div class="text-content">
+                <span class="ant-typography d-block">{{ trainer.bio }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="ant-card">
+              <div class="ant-card-head">
+                <div class="ant-card-head-wrapper">
+                  <div class="ant-card-head-title">Training Experience</div>
+                </div>
+              </div>
+              <div class="ant-card-body d-flex align-items-center justify-content-between">
+                <div class="ant-card-grid">
+                  <div class="d-flex align-items-center flex-column">
+                    <img src="{% static 'frontend_assets/images/student.png' %}" width="50">
+                    <h3 class="ant-typography" style="margin: 0px;">{{ trainer.prior_batches }}</h3>
+                    <span class="ant-typography"><strong>Batches</strong></span>
+                  </div>
+                </div>
+                <div class="ant-card-grid">
+                  <div class="d-flex align-items-center flex-column">
+                    <img src="{% static 'frontend_assets/images/study.png' %}" width="50">
+                    <h3 class="ant-typography" style="margin: 0px;">{{ trainer.prior_aspirants }}</h3>
+                    <span class="ant-typography"><strong>Aspirants</strong></span>
+                  </div>
+                </div>
+                <div class="ant-card-grid">
+                  <div class="d-flex align-items-center flex-column">
+                    <img src="{% static 'frontend_assets/images/test.png' %}" width="50">
+                    <h3 class="ant-typography" style="margin: 0px;">{{ trainer.prior_weekly_tests }}</h3>
+                    <span class="ant-typography"><strong>Tests</strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-12 col-sm-12">
+        <div class="gutter-row timeline">
+          <h4 class="ant-typography" style="margin-top: 10px;">IT Experience</h4>
+          <ul class="ant-timeline list-unstyled">
+            {% for org in trainer.organizations.all %}
+            <li class="ant-timeline-item position-relative">
+              <div class="ant-timeline-item-label">{{ org.from_year }} - {% if org.to_year %}{{ org.to_year }}{% else %}Till date{% endif %}</div>
+              <div class="ant-timeline-item-tail"></div>
+              <div class="ant-timeline-item-head ant-timeline-item-head-blue"></div>
+              <div class="ant-timeline-item-content">{{ org.name }}</div>
+            </li>
+            {% endfor %}
+          </ul>
+
+          {% if trainer.awards.exists %}
+          <h4 class="ant-typography mt-4">Awards &amp; Rewards</h4>
+          <div class="d-flex flex-wrap gap-3 gallery">
+            {% for award in trainer.awards.all %}
+            <div class="ant-image" style="width: 50px;">
+                <a href="{{ award.certificate.url }}" target="_blank">
+              <img class="ant-image-img" src="{% static 'frontend_assets/images/certificate.png' %}" width="50" alt="{{ award.full_title }}" title="{{ award.full_title }}">
+                 </a>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

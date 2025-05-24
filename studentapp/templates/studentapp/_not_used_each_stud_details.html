@@ -1,0 +1,48 @@
+{% extends 'studentapp/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row py-5">
+    <div class="col-md-6">
+
+
+      {% if stud %}
+
+      <section id="bc" class="mb-5">
+
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'adminapp:admin_home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'studentapp:view_students' %}">Students</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{stud.name}}</li>
+          </ol>
+        </nav>
+      </section>
+
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-secondary">First Name:
+          <span class="float-right">{{stud.first_name}}</span>
+        </li>
+
+        <li class="list-group-item text-secondary">Last Name:
+          <span class="float-right">{{stud.last_name}}</span>
+        </li>
+
+        <li class="list-group-item text-secondary">
+          Email ID:
+          <span class="float-right">{{stud.email_id}}</span>
+        </li>
+
+        <li class="list-group-item text-secondary">
+          Mobile No:
+          <span class="float-right">{{stud.phone_number}}</span>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

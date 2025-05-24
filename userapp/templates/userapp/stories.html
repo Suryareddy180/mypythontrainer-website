@@ -1,0 +1,53 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}Course Feedback{% endblock %}
+{% block content %}
+
+<section id="course-feedback" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4>Course Feedback</h4>
+
+                <div class="col-12">
+                    <div class="mobile-respon mt-4">
+                        <table class="table table-striped table-hover" style="background-color: #fef3c7;">
+                            <thead style="background-color: #f08d27; color: white;">
+                                <tr>
+                                    <th style="background-color: #f08d27;">Course Name</th>
+                                    <th style="background-color: #f08d27;">Course Duration</th>
+                                    <th style="background-color: #f08d27;">Trainer Name</th>
+                                    <th style="background-color: #f08d27;">Phone Number</th>
+                                    <th style="background-color: #f08d27;">Comment</th>
+                                    <th style="background-color: #f08d27;">Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if course_feedbacks %}
+                                    {% for feedback in course_feedbacks %}
+                                    <tr>
+                                        <td>{{ feedback.course.title }}</td>
+                                        <td>{{ feedback.course.duration }} months</td>
+                                        <td>{{ feedback.trainer.name }}</td>
+                                        <td>{{ feedback.trainer.phone_number}}</td>
+                                        <td style="max-width: 300px;">{{ feedback.comment }}</td>
+                                        <td>{{ feedback.rating }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6" class="text-center">No feedback available yet!</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

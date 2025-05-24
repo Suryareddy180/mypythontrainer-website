@@ -1,0 +1,141 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% load humanize %}
+{% load custom_filters %}
+{% block title %}My Enrolled Courses{% endblock %}
+{% block content %}
+
+<section id="complete_python" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4>My Enrolled Courses</h4>
+                {% if applied_courses %}
+                <style>
+                    #enroll-instructions ul li {
+                        font-size: 14px;
+                    }
+                </style>
+                <p>Here you can find details of all the batches that you've applied for. Please note that,</p>
+                <div id="enroll-instructions">
+                    <ul>
+                        <li>In case of <b>Payment Pending</b>, You've to <b>Book a Seat</b> on or before mentioned due date. Otherwise, your enrollment will be <b>Auto Cancelled.</b></li>
+                        <li>In case of <b>Seat Reserved</b>, After the demo class, You've to <b>Confirm your Seat</b> if you want to continue with complete course.</li>
+                        <li>In case of <b>Seat Confirmed</b>, You are <b>All set</b>! Just, focus on the learning and All the Best!</li>
+                    </ul>
+                </div>
+                {% endif %}
+
+                <div class="col-12">
+                    <div class="mobile-respon mt-4">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Class Details</th>
+                                    <th>Links</th>
+                                    <th>Enrollment Details</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if applied_courses %}
+                                    {% for enrollment in applied_courses %}
+                                    <tr>
+                                        <td>
+                                            <b>{{ enrollment.batch.course.title }} ({{ enrollment.batch.batch_number }})</b><br />
+                                            <span class="text-muted" style="font-size: 0.8em;">
+                                                Demo: {{ enrollment.batch.start_date }} at {{ enrollment.batch.start_time|date:"h:i a" }}<br />
+                                                Course Duration: {{ enrollment.batch.duration|course_duration_round }} months<br />
+                                                Any queries, Contact ({{ enrollment.batch.poc_name }})<br/>
+                                                on WhatsApp: +91 {{ enrollment.batch.poc_mobile_no }}
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            {{ enrollment.batch.start_time|date:"h:i a" }} - {{ enrollment.batch.end_time|date:"h:i a" }} IST<br />
+                                            <span class="text-muted" style="font-size: 0.8em;">
+                                                (Daily {{ enrollment.batch.time_difference }} hr, Weekly {{ enrollment.batch.class_per_week }} days, <b>{{ enrollment.batch.language }}</b>)
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            {% if enrollment.enrollment_status == 'pending' or enrollment.enrollment_status == 'deactivated' %}
+                                                <u class="d-block mt-2">Demo Class Link</u>
+                                                <u class="d-block mt-2">Regular Class Link</u>
+                                                <u class="d-block mt-2">Course Material Link</u>
+                                                <u class="d-block mt-2">Weekly Test Link</u>
+                                            {% elif enrollment.enrollment_status == 'reserved' %}
+                                                <a href="{{ enrollment.batch.class_room_link }}" target="_blank" rel="noreferrer nofollow" class="d-block mt-2">Demo Class Link</a>
+                                                <u class="d-block mt-2">Regular Class Link</u>
+                                                <u class="d-block mt-2">Course Material Link</u>
+                                                <u class="d-block mt-2">Weekly Test Link</u>
+                                            {% elif enrollment.enrollment_status == 'confirmed' %}
+                                                <a href="{{ enrollment.batch.class_room_link }}" target="_blank" rel="noreferrer nofollow" class="d-block mt-2">Demo Class Link</a>
+                                                <a href="{{ enrollment.batch.class_room_link }}" target="_blank" rel="noreferrer nofollow" class="d-block mt-2">Regular Class Link</a>
+                                                <a href="{{ enrollment.batch.course_material_link }}" target="_blank" rel="noreferrer nofollow" class="d-block mt-2">Course Material Link</a>
+                                                <a href="{{ enrollment.batch.quiz_link }}" target="_blank" rel="noreferrer nofollow" class="d-block mt-2">Weekly Test Link</a>
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            {% if enrollment.enrollment_status in 'pending deactivated reserved confirmed' %}
+                                                <span class="badge bg-warning">{{ enrollment.enrollment_status_display|capfirst }}</span><br/>
+                                            {% endif %}
+
+                                            <span class="text-muted" style="font-size: 0.8em;">
+                                                Enrolled On: {{ enrollment.enrollment_date|date:"M d, Y" }}<br/>
+                                            </span>
+
+                                            {% if enrollment.adv_status %}
+                                                {% if enrollment.full_status %}
+                                                    <span class="text-muted" style="font-size: 0.8em;">
+                                                        Seat Booked On: {{ enrollment.adv_payment_date|date:"M d, Y" }}<br/>
+                                                        Seat Confirmed On: {{ enrollment.full_payment_date|date:"M d, Y" }}<br/>
+                                                    </span>
+                                                {% else %}
+                                                    <span class="text-muted" style="font-size: 0.8em;">
+                                                        Seat Booked On: {{ enrollment.adv_payment_date|date:"M d, Y" }}<br/>
+                                                        (Please confirm your seat ASAP by paying the remaining amount!)<br/>
+                                                        (All <b>Links</b> will be <b>enabled</b> after confirmation.)<br/>
+                                                        <a href="{% url 'userapp:make_payment' enrollment.id 'full' %}" class="btn btn-primary btn-sm mt-2">Confirm Seat</a>
+                                                    </span>
+                                                {% endif %}
+                                            {% else %}
+                                                {% if enrollment.full_status %}
+                                                    <span class="text-muted" style="font-size: 0.8em;">
+                                                        Seat Booked On: {{ enrollment.full_payment_date|date:"M d, Y" }}<br/>
+                                                        Seat Confirmed On: {{ enrollment.full_payment_date|date:"M d, Y" }}<br/>
+                                                    </span>
+                                                {% else %}
+                                                    <span class="text-muted" style="font-size: 0.8em;">
+                                                        (Please book your seat before <b>{{ enrollment.reservation_last_date|date:"M d, Y" }}</b> to avoid auto-cancellation.)<br/>
+                                                        (Demo Link will activate after booking/confirmation.)
+                                                    </span>
+                                                {% endif %}
+                                            {% endif %}
+                                        </td>
+
+                                        <td class="text-center">
+                                            <a href="{% url 'userapp:feedback' %}" class="btn" style="background-color: #d9f99d; padding: 10px; border-radius: 10px;">
+                                                <img src="{% static 'userapp/images/create_icon.png' %}" alt="Edit" style="height: 30px; width: 30px;">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5" class="text-center">You have not enrolled for any courses yet!</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

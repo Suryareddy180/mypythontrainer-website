@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    <a href="{% url 'userapp:index_page' %}" class="navbar-brand">Course Registration</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"></li>
+        <a href="{% url 'userapp:home' %}" class="nav-link">My Home
+        </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'userapp:course_view' %}" class="nav-link">Courses
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'userapp:about_page' %}" class="nav-link">About Us
+          </a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item"></li>
+          <a href="{% url 'userapp:applied_courses' %}" class="nav-link">My Applied Courses
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{% url 'userapp:logout' %}" class="nav-link">
+            Logout
+          </a>
+        </li>
+        
+        {% else %}
+
+        <li class="nav-item">
+          <a href="{% url 'userapp:register-student' %}" class="nav-link">
+            Register
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'userapp:login' %}" class="nav-link">
+            Login
+          </a>
+        </li>
+
+        {% endif %}
+
+
+
+
+      </ul>
+    </div>
+  </div>
+</nav>

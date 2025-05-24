@@ -1,0 +1,15 @@
+{% extends 'userapp/new-base.html' %}
+{% load static %}
+{% block title %}Story Submitted{% endblock %}
+{% block content %}
+
+<div class="container mt-5 text-center">
+    <h2 class="mb-4">Thank You for Sharing Your Story!</h2>
+    <p>Your feedback has been submitted successfully. 🎉</p>
+
+    <a href="{% url 'userapp:applied_courses' %}" class="btn btn-primary mt-3">
+        Back to My Courses
+    </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'batchapp/base.html' %}
+
+{% load humanize %}
+{% block content %}
+
+{% if each_bch %}
+
+<!-- NOT USED -->
+
+<div class="container">
+    <div class="row mb-5 fields mt-5">
+        <div class="col-md-6">
+            <section id="bc" class="mb-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'adminapp:admin_home' %}">Admin Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'batchapp:batch_list' %}">Batches</a>
+                        </li>
+
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{each_bch.batch_number}}
+                        </li>
+                    </ol>
+                </nav>
+            </section>
+            <ul class="list-group list-group-flush">
+                <h3 class="text-info">Batch Info</h3>
+
+                <li class="list-group-item text-secondary">
+                    Batch Number:
+                    <span class="float-right">{{each_bch.batch_number}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                    Course Name:
+                    <span class="float-right">{{each_bch.course}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                    Start Date:
+                    <span class="float-right">{{each_bch.start_date}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                    End Date:
+                    <span class="float-right">{{each_bch.end_date}}</span>
+                </li>
+                <li class="list-group-item text-secondary">>
+                    Status:
+                    <span class="float-right">{{each_bch.status}}</span>
+                </li>
+            </ul>
+            <div class="pt-4">
+                <a href="{% url 'batchapp:edit_batch' each_bch.id %}" class="btn btn-secondary float-left px-4">Update</a>
+                <a href="{% url 'batchapp:batch_delete' each_bch.id %}" class="btn btn-danger float-right px-4">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

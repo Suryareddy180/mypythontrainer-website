@@ -1,0 +1,39 @@
+
+{% extends 'trainers/base.html' %}
+
+{% block content%}
+
+<!-- NOT USED - Migrated to Modals  -->
+<!-- start row  -->
+<div class="row">
+    <div class="col-12">
+        <div>
+            <h4 class="header-title mb-3">
+                <a href="{% url 'adminapp:admin_home' %}">Admin Home</a> / <a
+                    href="{% url 'trainers:trainer_view' %}">Trainers</a> / Delete Trainer
+            </h4>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Delete Confirmation</h5>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete Trainer - <b>{{ trainer.name }}</b>?</p>
+        </div>
+        <div class="modal-footer">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                <a href="{% url 'trainers:trainer_view' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
